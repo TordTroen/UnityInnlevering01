@@ -14,5 +14,6 @@ Funksjoner
 	- Sekundære funksjoner
 		- Pause spillet
 		- Gjenta spillet etter fullføring
+		- Lyd
 	- Tritære funksjoner
 }
