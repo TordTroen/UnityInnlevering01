@@ -3,8 +3,18 @@ using System.Collections;
 
 public class Brick : MonoBehaviour
 {
-	void OnTriggerEnter2D(Collider2D other)
+	public int pointReward = 1;
+
+	private ScoreManager scoreManager;
+
+	void Awake()
 	{
+		scoreManager = GameObject.FindGameObjectWithTag (Tags.manager).GetComponent<ScoreManager>();
+	}
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		scoreManager.currentScore += pointReward;
 		gameObject.SetActive (false);
 	}
 }
