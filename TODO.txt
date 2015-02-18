@@ -14,6 +14,26 @@ Funksjoner
 	- Sekundære funksjoner
 		- Pause spillet
 		- Gjenta spillet etter fullføring
-		- Lyd
+		- Multiplayer
 	- Tritære funksjoner
+		- Vansklighetsgrad
+			- Brikker tåler mer
+		- Lage egne baner
+		- Powerups
+}
+
+Meny
+{
+	- Hovedmeny
+		- Spill
+		- Vansklighetsgrad
+		- Antall spillere
+		- Volum
+	- Pausemeny
+		- Gå til hovedmeny
+		- Volum
+	- Tape/vinne meny
+		- Retry
+		- Gå til hovedmeny
+		- Volum
 }
