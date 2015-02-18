@@ -1,0 +1,18 @@
+============================
+========= Breakout =========
+============================
+
+Funksjoner
+{
+	- Hovedfunksjoner
+		- Spade som kan beveges frem og tilbake
+		- Ball som spretter i spaden, veggene og brikkene
+		- Vegger (skjermens kanter)
+		- Brikker som spawner
+		- Meny
+		- Tape/vinne
+	- Sekundære funksjoner
+		- Pause spillet
+		- Gjenta spillet etter fullføring
+	- Tritære funksjoner
+}
