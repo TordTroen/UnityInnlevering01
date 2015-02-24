@@ -20,6 +20,7 @@ Funksjoner
 			- Brikker tåler mer
 		- Lage egne baner
 		- Powerups
+		- App til mobil
 }
 
 Meny
