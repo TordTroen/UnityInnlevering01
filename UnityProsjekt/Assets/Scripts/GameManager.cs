@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
 
 public enum PlayerMode
 {
-	Single,
-	Two,
-	Three,
-	Four
+	Single = 1,
+	Two = 2,
+	Three = 3,
+	Four = 4
 }

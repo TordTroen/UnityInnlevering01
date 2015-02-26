@@ -84,6 +84,7 @@ GameObject:
   - 4: {fileID: 264124003}
   - 61: {fileID: 264124002}
   - 212: {fileID: 264124004}
+  - 114: {fileID: 264124005}
   m_Layer: 0
   m_Name: WallLeft
   m_TagString: Untagged
@@ -113,7 +114,7 @@ Transform:
   m_LocalScale: {x: 1, y: 20, z: 0}
   m_Children: []
   m_Father: {fileID: 1698536596}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!212 &264124004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -136,6 +137,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aafe7eb9ca8854a2c9228cedb6b375fd, type: 3}
   m_Color: {r: .654411793, g: .654411793, b: .654411793, a: 1}
+--- !u!114 &264124005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 264124001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f0d11c6be4e4717a382b77d48e5fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallId: 0
 --- !u!1 &1086360568
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +320,7 @@ GameObject:
   - 4: {fileID: 1694357715}
   - 61: {fileID: 1694357716}
   - 212: {fileID: 1694357717}
+  - 114: {fileID: 1694357718}
   m_Layer: 0
   m_Name: WallRight
   m_TagString: Untagged
@@ -325,7 +339,7 @@ Transform:
   m_LocalScale: {x: 1, y: 20, z: 0}
   m_Children: []
   m_Father: {fileID: 1698536596}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!61 &1694357716
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -359,6 +373,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aafe7eb9ca8854a2c9228cedb6b375fd, type: 3}
   m_Color: {r: .654411793, g: .654411793, b: .654411793, a: 1}
+--- !u!114 &1694357718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1694357714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f0d11c6be4e4717a382b77d48e5fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallId: 0
 --- !u!1 &1698536595
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,10 +410,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1912686919}
   - {fileID: 264124003}
   - {fileID: 2087421134}
   - {fileID: 1694357715}
-  - {fileID: 1912686919}
   m_Father: {fileID: 1729576408}
   m_RootOrder: 0
 --- !u!1 &1729576406
@@ -418,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b148f7717e7dc4ca58854bc5d3cb7f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMode: 0
+  playerMode: 1
   topRight: {x: 0, y: 0, z: 0}
   bottomLeft: {x: 0, y: 0, z: 0}
 --- !u!4 &1729576408
@@ -447,10 +473,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallInset: .0500000007
   walls:
+  - {fileID: 1912686919}
   - {fileID: 264124003}
   - {fileID: 2087421134}
   - {fileID: 1694357715}
-  - {fileID: 1912686919}
   pixelsPerUnit: 100
 --- !u!1 &1912686918
 GameObject:
@@ -462,6 +488,7 @@ GameObject:
   - 4: {fileID: 1912686919}
   - 61: {fileID: 1912686920}
   - 212: {fileID: 1912686921}
+  - 114: {fileID: 1912686922}
   m_Layer: 0
   m_Name: WallBottom
   m_TagString: Untagged
@@ -480,7 +507,7 @@ Transform:
   m_LocalScale: {x: 20, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 1698536596}
-  m_RootOrder: 3
+  m_RootOrder: 0
 --- !u!61 &1912686920
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -514,6 +541,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aafe7eb9ca8854a2c9228cedb6b375fd, type: 3}
   m_Color: {r: .654411793, g: .654411793, b: .654411793, a: 1}
+--- !u!114 &1912686922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1912686918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f0d11c6be4e4717a382b77d48e5fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallId: 0
 --- !u!1001 &2042484439
 Prefab:
   m_ObjectHideFlags: 0
@@ -568,6 +607,7 @@ GameObject:
   - 4: {fileID: 2087421134}
   - 61: {fileID: 2087421135}
   - 212: {fileID: 2087421136}
+  - 114: {fileID: 2087421137}
   m_Layer: 0
   m_Name: WallTop
   m_TagString: Untagged
@@ -586,7 +626,7 @@ Transform:
   m_LocalScale: {x: 20, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 1698536596}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!61 &2087421135
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -620,3 +660,15 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aafe7eb9ca8854a2c9228cedb6b375fd, type: 3}
   m_Color: {r: .654411793, g: .654411793, b: .654411793, a: 1}
+--- !u!114 &2087421137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087421133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f0d11c6be4e4717a382b77d48e5fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallId: 0
