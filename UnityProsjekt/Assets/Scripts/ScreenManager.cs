@@ -13,7 +13,7 @@ public class ScreenManager : MonoBehaviour
 	{
 		if (!cam)
 		{
-			cam = GetComponent<Camera>();
+			cam = Camera.main;
 		}
 		cam.orthographicSize = (Screen.height * 0.5f) / pixelsPerUnit;
 	}
