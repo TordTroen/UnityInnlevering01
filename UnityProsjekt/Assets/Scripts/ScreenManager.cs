@@ -7,7 +7,7 @@ public class ScreenManager : MonoBehaviour
 	public Transform[] walls; // [0] - left, [1] - top, [2] - right, [3] - bottom
 
 	public int pixelsPerUnit = 100;
-	public Camera cam;
+	private Camera cam;
 	
 	void Awake()
 	{
@@ -36,12 +36,12 @@ public class ScreenManager : MonoBehaviour
 		walls[0].position = new Vector3(bl.x - wallMargin + inset, bl.y + height); // Left
 		walls[1].position = new Vector3(bl.x + width, tr.y + wallMargin - inset); // Top
 		walls[2].position = new Vector3(tr.x + wallMargin - inset, tr.y - height); // Right
-		walls[3].position = new Vector3(tr.x - width, bl.y - wallMargin + inset); // Bottom
+		//walls[3].position = new Vector3(tr.x - width, bl.y - wallMargin + inset); // Bottom
 
 		walls[0].localScale = new Vector3(1f, height * 2f); // Left
 		walls[1].localScale = new Vector3(width * 2f, 1f); // Top
 		walls[2].localScale = new Vector3(1f, height * 2f); // Right
-		walls[3].localScale = new Vector3(width * 2f, 1f); // Bottom
+		//walls[3].localScale = new Vector3(width * 2f, 1f); // Bottom
 
 
 		/*
