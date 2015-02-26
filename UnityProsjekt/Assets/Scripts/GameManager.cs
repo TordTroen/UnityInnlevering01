@@ -3,23 +3,21 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-	public PlayerMode playerMode = PlayerMode.Single;
+	public PlayerMode playerMode = PlayerMode.Single; // Playermode (amount of players)
 
-	[HideInInspector]public Vector3 topRight; // topRight.x = høyre kant, topRight.y = topp kant
-	[HideInInspector]public Vector3 bottomLeft; // bottomLeft.x = venstre kant, bottomLeft.y = nedre kant
+	[HideInInspector]public Vector3 topRight; // topRight.x = right edge, topRight.y = top edge
+	[HideInInspector]public Vector3 bottomLeft; // bottomLeft.x = left edge, bottomLeft.y = bottom edge
 	public static GameManager instance = null;
 
 	void Awake()
 	{
 		instance = this;
-
-		UpdateScreenBounds ();
 	}
 
 	/// <summary>
 	/// Updates the screen bounds.
 	/// </summary>
-	void UpdateScreenBounds()
+	public void UpdateScreenBounds()
 	{
 		Camera cam = Camera.main;
 		bottomLeft = cam.ScreenToWorldPoint (new Vector3 (0f, 0f));
