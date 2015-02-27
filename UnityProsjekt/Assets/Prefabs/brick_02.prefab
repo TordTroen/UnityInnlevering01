@@ -53,6 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreReward: 2
+  curHealth: 0
+  maxHealth: 2
 --- !u!212 &21259174
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -11,7 +11,7 @@ public class ScreenManager : MonoBehaviour
 	void Awake()
 	{
 		// Set camera size depending on screen height and pixelsperunits (in spritesettings)
-		Camera.main.orthographicSize = (Screen.height * 0.5f) / pixelsPerUnit;
+		//Camera.main.orthographicSize = (Screen.height * 0.5f) / pixelsPerUnit;
 		GameManager.instance.UpdateScreenBounds ();
 	}
 
@@ -23,7 +23,7 @@ public class ScreenManager : MonoBehaviour
 
 	void ArrangeWalls()
 	{
-		Vector3 bl = GameManager.instance.bottomLeft; // Bottom left corner in world coordinates
+		/*Vector3 bl = GameManager.instance.bottomLeft; // Bottom left corner in world coordinates
 		Vector3 tr = GameManager.instance.topRight; // Top right corner in world coordinates
 		float width = Vector3.Distance (bl, new Vector3(bl.x, tr.y)) * 0.5f; // Screen width in Unity meters
 		float height = Vector3.Distance (tr, new Vector3(tr.x, bl.y)) * 0.5f; // Screen height in Unity meters
@@ -52,6 +52,6 @@ public class ScreenManager : MonoBehaviour
 		for (int i = 0; i < walls.Length; i ++)
 		{
 			walls[i].GetComponent<Wall>().wallId = i;
-		}
+		}*/
 	}
 }
