@@ -5,30 +5,23 @@ public class BallMovement : MonoBehaviour {
 
 
 	public float movementSpeed;
-	public float xDir;
-	public float yDir;
-	public Vector3 oldVector;
+	private float xDir = 1;
+	private float yDir = 1;
+	private Vector3 oldVector;
 	public bool hasStarted;
-
-	// Use this for initialization
-	void Start () {
 	
-	}
-	
-	// Update is called once per frame
 	void Update () {
 		if(Input.GetButtonDown("Jump")){
-			transform.parent = null;
+			transform.SetParent (null);
 			hasStarted = true;
 		}
 		if(hasStarted){
-		oldVector = new Vector3 (xDir, yDir, 0.0f);
-		rigidbody2D.velocity = new Vector3(movementSpeed * xDir, movementSpeed * yDir, 0f) * Time.deltaTime;
+			oldVector = new Vector3 (xDir, yDir, 0.0f);
+			rigidbody2D.velocity = new Vector3(movementSpeed * xDir, movementSpeed * yDir, 0f) * Time.deltaTime;
 		}
 	}
 
 	public void ChangeDirectionX(Vector3 normal){
-		Debug.Log ("Try change y direction");
 		float yNormal = normal.y;
 		float xNormal = normal.x;
 		xDir = oldVector.x - (2 * ((xNormal * oldVector.x + yNormal * oldVector.y) * xNormal));
@@ -66,12 +59,16 @@ public class BallMovement : MonoBehaviour {
 			}
 		}*/
 		Vector3 norm = -col.contacts [0].normal;
-		if (norm.x < 0.1f && norm.x > -0.1f) { // Horisontalt
+		if (norm.x < 1f && norm.x > -1f) { // Horisontalt
 			print ("hit horizontal");
 			ChangeDirectionY (norm);
-		} else if (norm.y < 0.1f && norm.y > -0.1f) { // Horisontalt
+		} else if (norm.y < 1f && norm.y > -1f) { // Horisontalt
 			print ("hit vertical");
 			ChangeDirectionX (norm);
+		}
+		else
+		{
+			Debug.Log ("Hit some weird-ass shape");
 		}
 	}
 }
