@@ -7,6 +7,10 @@ public class Wall : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		print (other.gameObject.name + " hit wall " + wallId);
+		if (GameManager.instance.playerMode == PlayerMode.Single && wallId == 0)
+		{
+			Application.LoadLevel (Application.loadedLevel);
+		}
+		//print (other.gameObject.name + " hit wall " + wallId);
 	}
 }
