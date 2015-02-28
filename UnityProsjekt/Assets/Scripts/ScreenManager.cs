@@ -13,10 +13,7 @@ public class ScreenManager : MonoBehaviour
 		// Set camera size depending on screen height and pixelsperunits (in spritesettings)
 		Camera.main.orthographicSize = (Screen.height * 0.5f) / pixelsPerUnit;
 		GameManager.instance.UpdateScreenBounds ();
-	}
 
-	void Start()
-	{
 		// Position walls at start of game
 		ArrangeWalls ();
 	}
@@ -41,7 +38,7 @@ public class ScreenManager : MonoBehaviour
 		float[] insets = new float[]{1f, 1f, 1f, 1f};
 		for (int i = 0; i < (int)GameManager.instance.playerMode; i ++)
 		{
-			insets[i] *= -1; // Invert inset to put outisde screen, instead of outside
+			insets[i] = 0.5f; // Invert inset to put outisde screen, instead of outside
 		}
 
 		// Set the position of the walls

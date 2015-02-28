@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11459174}
   m_Layer: 0
   m_Name: brick_02
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,6 +55,7 @@ MonoBehaviour:
   scoreReward: 2
   curHealth: 0
   maxHealth: 2
+  shrinkSpeed: 10
 --- !u!212 &21259174
 SpriteRenderer:
   m_ObjectHideFlags: 1

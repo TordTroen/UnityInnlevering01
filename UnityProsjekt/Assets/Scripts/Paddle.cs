@@ -7,6 +7,9 @@ public class Paddle : MonoBehaviour {
 	public KeyCode leftKey = KeyCode.LeftArrow;
 	public KeyCode rightKey = KeyCode.RightArrow;
 
+	public int curHealth;
+	public int maxHealth = 3;
+
 	public int playerId;
 	private float paddleSizeX;
 	private float paddleSizeY;
@@ -54,6 +57,9 @@ public class Paddle : MonoBehaviour {
 	/// <param name="keyCombo">Key combination.</param>
 	public void InitializePaddle(int playerId, KeyCombination keyCombo)
 	{
+		// Set health
+		curHealth = maxHealth;
+
 		// Set playerid
 		this.playerId = playerId;
 		
@@ -71,5 +77,16 @@ public class Paddle : MonoBehaviour {
 		{
 			invert = -1;
 		}
+	}
+
+	public void LoseLife()
+	{
+		curHealth --;
+		PlayerManager.instance.OnPlayerLoseHealth (playerId, !IsAlive ());
+	}
+
+	public bool IsAlive()
+	{
+		return curHealth > 0;
 	}
 }

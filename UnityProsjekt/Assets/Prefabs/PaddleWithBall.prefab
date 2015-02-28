@@ -14,7 +14,7 @@ GameObject:
   - 58: {fileID: 5868802}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,8 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a00b9e1b16545c6931e20090e6f54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
+  movementSpeed: 9
   hasStarted: 0
+  inCooldown: 0
 --- !u!114 &11468804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +127,8 @@ MonoBehaviour:
   paddleSpeed: 10
   leftKey: 276
   rightKey: 275
+  curHealth: 0
+  maxHealth: 3
   playerId: 0
 --- !u!212 &21268802
 SpriteRenderer:

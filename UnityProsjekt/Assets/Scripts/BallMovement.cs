@@ -7,30 +7,36 @@ public class BallMovement : MonoBehaviour {
 	public float movementSpeed;
 	private float xDir = 1;
 	private float yDir = 1;
+	private Vector3 vel;
 	private Vector3 oldVector;
 	public bool hasStarted;
-	
-	void Update () {
+	public bool inCooldown = false;
+
+	void FixedUpdate () {
 		if(Input.GetButtonDown("Jump")){
 			transform.SetParent (null);
 			hasStarted = true;
 		}
 		if(hasStarted){
 			oldVector = new Vector3 (xDir, yDir, 0.0f);
-			rigidbody2D.velocity = new Vector3(movementSpeed * xDir, movementSpeed * yDir, 0f) * Time.deltaTime;
+			rigidbody2D.velocity = new Vector3(movementSpeed * xDir, movementSpeed * yDir, 0f);// * Time.deltaTime;
 		}
+
+		vel = rigidbody2D.velocity;
 	}
 
 	public void ChangeDirectionX(Vector3 normal){
 		float yNormal = normal.y;
 		float xNormal = normal.x;
 		xDir = oldVector.x - (2 * ((xNormal * oldVector.x + yNormal * oldVector.y) * xNormal));
+		//xDir = Mathf.Round (xDir);
 	}
 
 	public void ChangeDirectionY(Vector3 normal){
 		float xNormal = normal.x;
 		float yNormal = normal.y;
 		yDir = oldVector.y - (2 * ((xNormal * oldVector.x + yNormal * oldVector.y) * yNormal));
+		//yDir = Mathf.Round (yDir);
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
@@ -58,17 +64,37 @@ public class BallMovement : MonoBehaviour {
 				col.gameObject.GetComponent<BallMovementVectoring>().ChangeDirectionY(normal);
 			}
 		}*/
+
+		// Start cooldown (to prevent taking out multiple bricks at the same time)
+		if (col.gameObject.tag == "Brick")
+		{
+			inCooldown = true; // Set to incooldown = true
+			CancelInvoke ("EndCooldown"); // End current invoke, incase one is already running
+			Invoke ("EndCooldown", 0.02f); // Invoke endcooldown
+		}
+
+
 		Vector3 norm = -col.contacts [0].normal;
-		if (norm.x < 1f && norm.x > -1f) { // Horisontalt
-			print ("hit horizontal");
+		if (norm.x <= 1f && norm.x >= -1f) { // Horisontalt
+			//print ("hit horizontal");
 			ChangeDirectionY (norm);
-		} else if (norm.y < 1f && norm.y > -1f) { // Horisontalt
-			print ("hit vertical");
+		}
+		if (norm.y <= 1f && norm.y >= -1f) { // Vertikalt
+			//print ("hit vertical");
 			ChangeDirectionX (norm);
 		}
 		else
 		{
-			Debug.Log ("Hit some weird-ass shape");
+			Debug.Log ("Hit some weird-ass shape [" + col.gameObject + "]");
+			print (col.transform.position);
 		}
+	}
+
+	/// <summary>
+	/// Ends the cooldown.
+	/// </summary>
+	void EndCooldown()
+	{
+		inCooldown = false;
 	}
 }

@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
 	public PlayerMode playerMode = PlayerMode.Single; // Playermode (amount of players)
-	public GameObject paddlePrefab; // Paddle prefab
-	public KeyCombination[] keyCombinations; // All player key combinations
-	public Transform[] spawnPoints; // Spawnpoints TODO Get these dynamically from each level
 
 	[HideInInspector]public Vector3 topRight; // topRight.x = right edge, topRight.y = top edge
 	[HideInInspector]public Vector3 bottomLeft; // bottomLeft.x = left edge, bottomLeft.y = bottom edge
@@ -16,21 +14,6 @@ public class GameManager : MonoBehaviour
 	void Awake()
 	{
 		instance = this;
-	}
-
-	void Start()
-	{
-		InitializePlayers (); // TODO put at start of round
-	}
-
-	void InitializePlayers()
-	{
-		for (int i = 0; i < (int)playerMode; i ++)
-		{
-			GameObject paddleObject = Instantiate (paddlePrefab, spawnPoints[i].position, Quaternion.identity) as GameObject;
-			Paddle paddle = paddleObject.GetComponent<Paddle>();
-			paddle.InitializePaddle (i, keyCombinations[i]);
-		}
 	}
 
 	/// <summary>
@@ -46,15 +29,6 @@ public class GameManager : MonoBehaviour
 		topRight.z = 0f; // Zero out the z
 		centerOfScreen.z = 0f; // Zero out the z
 	}
-}
-
-// Class of left/right key for player initialization
-// 
-[System.Serializable]
-public class KeyCombination
-{
-	public KeyCode leftKey = KeyCode.LeftArrow;
-	public KeyCode rightKey = KeyCode.RightArrow;
 }
 
 public enum PlayerMode

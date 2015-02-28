@@ -7,9 +7,9 @@ public class Wall : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		if (GameManager.instance.playerMode == PlayerMode.Single && wallId == 0)
+		if (PlayerManager.instance.allPaddles.Count > wallId)
 		{
-			Application.LoadLevel (Application.loadedLevel);
+			PlayerManager.instance.allPaddles[wallId].LoseLife ();
 		}
 		//print (other.gameObject.name + " hit wall " + wallId);
 	}
