@@ -9,15 +9,18 @@ public class Brick : MonoBehaviour
 	public float shrinkSpeed = 1f;
 	private bool shrinking = false;
 	private BoxCollider2D boxCollider;
+	private SpriteRenderer spriteRenderer;
 
 	void Awake()
 	{
 		boxCollider = GetComponent<BoxCollider2D>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	void Start()
 	{
 		curHealth = maxHealth;
+		SetColor ();
 	}
 
 	void Update()
@@ -46,8 +49,16 @@ public class Brick : MonoBehaviour
 					//gameObject.SetActive (false);
 					boxCollider.enabled = false;
 					shrinking = true;
+					curHealth = 0;
 				}
+				SetColor ();
 			}
 		}
+	}
+
+	void SetColor()
+	{
+		// Set spritecolor to the correct color from the GameManagers brickColors array
+		spriteRenderer.color = GameManager.instance.brickColors[curHealth];
 	}
 }

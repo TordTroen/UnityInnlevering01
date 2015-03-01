@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
 	public PlayerMode playerMode = PlayerMode.Single; // Playermode (amount of players)
+	public Color[] brickColors;
 
 	[HideInInspector]public Vector3 topRight; // topRight.x = right edge, topRight.y = top edge
 	[HideInInspector]public Vector3 bottomLeft; // bottomLeft.x = left edge, bottomLeft.y = bottom edge

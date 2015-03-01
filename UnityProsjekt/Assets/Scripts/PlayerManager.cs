@@ -39,7 +39,8 @@ public class PlayerManager : MonoBehaviour
 	{
 		// TODO update player health texts here (called when a player loses healht)
 		// TODO Reset player that lost health
-		// TODO Check if all players are dead
+
+		// Check if all players are dead
 		int alivePlayers = 0;
 		for (int i = 0; i < allPaddles.Count; i ++)
 		{
@@ -50,7 +51,7 @@ public class PlayerManager : MonoBehaviour
 		}
 		if (alivePlayers <= 0)
 		{
-
+			// TODO End game
 		}
 	}
 }

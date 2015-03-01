@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11464260}
   - 50: {fileID: 5064260}
   - 58: {fileID: 5864260}
+  - 61: {fileID: 6145894}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -57,6 +58,17 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_Radius: .159999996
   m_Center: {x: 0, y: 0}
+--- !u!61 &6145894
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164260}
+  m_Enabled: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: .256000012, y: .256000012}
+  m_Center: {x: 0, y: 0}
 --- !u!114 &11464260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a00b9e1b16545c6931e20090e6f54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 9
+  movementSpeed: 300
   hasStarted: 0
   inCooldown: 0
 --- !u!212 &21264260

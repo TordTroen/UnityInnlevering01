@@ -10,7 +10,10 @@ public class Paddle : MonoBehaviour {
 	public int curHealth;
 	public int maxHealth = 3;
 
-	public int playerId;
+	public GameObject ballPrefab;
+	public BallMovement ball;
+
+	[HideInInspector]public int playerId;
 	private float paddleSizeX;
 	private float paddleSizeY;
 	private Vector2 paddleSize;
@@ -21,6 +24,8 @@ public class Paddle : MonoBehaviour {
 		paddleSize = GetComponent<SpriteRenderer>().bounds.extents;
 		//paddleSizeX = GetComponent<SpriteRenderer>().sprite.bounds.extents.x; // Husk å endre når vi legger til vegger
 		//paddleSizeY = GetComponent<SpriteRenderer>().sprite.bounds.extents.y;
+
+		ball = (Instantiate (ballPrefab, transform.position, Quaternion.identity) as GameObject).GetComponent<BallMovement>();
 	}
 
 	// Update is called once per frame
@@ -77,16 +82,36 @@ public class Paddle : MonoBehaviour {
 		{
 			invert = -1;
 		}
+
+		// Initialize the ball
+		ResetBall ();
 	}
 
 	public void LoseLife()
 	{
 		curHealth --;
 		PlayerManager.instance.OnPlayerLoseHealth (playerId, !IsAlive ());
+		if (IsAlive ())
+		{
+			ResetBall ();
+			ball.PlayBall ();
+		}
+		else
+		{
+			Destroy (ball.gameObject);
+			Destroy (gameObject);
+		}
 	}
 
 	public bool IsAlive()
 	{
 		return curHealth > 0;
+	}
+
+	void ResetBall()
+	{
+		ball.hasStarted = false;
+		ball.transform.SetParent (transform);
+		ball.transform.position = transform.position + transform.up * 1f;
 	}
 }

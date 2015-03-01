@@ -7,7 +7,7 @@ public class Wall : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		if (PlayerManager.instance.allPaddles.Count > wallId)
+		if (PlayerManager.instance.allPaddles.Count > wallId && PlayerManager.instance.allPaddles[wallId].ball.hasStarted)
 		{
 			PlayerManager.instance.allPaddles[wallId].LoseLife ();
 		}
