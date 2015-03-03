@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &10113375
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &34211703
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -276,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &40003483
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -355,6 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &44419051
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -434,6 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &53649899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -612,6 +617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &206062236
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -691,6 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &221960899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -770,6 +777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &234715203
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -849,6 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &240955066
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -928,6 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &243534494
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1007,6 +1017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 3
   maxHealth: 3
+  independantColor: 0
 --- !u!61 &244045330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1086,6 +1097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &255694521
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1165,6 +1177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &261526509
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1322,6 +1335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &265339206
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1401,6 +1415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &292948412
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1480,6 +1495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &305518903
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1625,6 +1641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &375424794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1704,6 +1721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &390841345
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1783,6 +1801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &399546029
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1862,6 +1881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &407088104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1941,6 +1961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 3
   maxHealth: 3
+  independantColor: 0
 --- !u!61 &420895136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2020,6 +2041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &499455983
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2099,6 +2121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 3
   maxHealth: 3
+  independantColor: 0
 --- !u!61 &501019955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2178,6 +2201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 3
   maxHealth: 3
+  independantColor: 0
 --- !u!61 &505460851
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2257,6 +2281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &508823855
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2336,6 +2361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &538637507
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2415,6 +2441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &553692935
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2567,6 +2594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &641635543
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2646,6 +2674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &661377979
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2725,6 +2754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &684732018
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2804,6 +2834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &696718896
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2883,6 +2914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &739540322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2962,6 +2994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &754311501
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3068,6 +3101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &783861240
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3147,6 +3181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &870842981
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3226,6 +3261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 3
   maxHealth: 3
+  independantColor: 0
 --- !u!61 &921803741
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3308,6 +3344,298 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6113294, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113292, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113290, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113288, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113286, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113284, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113282, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113280, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113278, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113276, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113274, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113272, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113270, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113268, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113266, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113264, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113262, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113260, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113258, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113256, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113254, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113252, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113250, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113248, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113246, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113244, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113242, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113240, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113238, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113236, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113234, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113232, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113230, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113228, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113226, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113224, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113222, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113220, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113218, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113216, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113214, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113212, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113210, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113208, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113206, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113204, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113202, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113200, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113198, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113196, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113194, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113192, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113190, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113188, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113186, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113184, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113182, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113180, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113178, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113176, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113174, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113172, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113170, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113168, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113166, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113164, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113162, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113160, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113158, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113156, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113154, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113152, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 113284, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
   m_RootGameObject: {fileID: 200328327}
@@ -3357,6 +3685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 3
   maxHealth: 3
+  independantColor: 0
 --- !u!61 &998416761
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3436,6 +3765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1029407205
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3599,6 +3929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 3
   maxHealth: 3
+  independantColor: 0
 --- !u!61 &1146258014
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3744,6 +4075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1165685502
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3823,6 +4155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1169363590
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3992,6 +4325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1254026271
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4071,6 +4405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1271254305
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4216,6 +4551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1313086184
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4338,6 +4674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1323782423
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4417,6 +4754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1344325180
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4496,6 +4834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1382386743
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4575,6 +4914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1464142823
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4654,6 +4994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1556850067
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4733,6 +5074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1587925589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4812,6 +5154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 3
   maxHealth: 3
+  independantColor: 0
 --- !u!61 &1602035111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4891,6 +5234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1604021675
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4970,6 +5314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1626884549
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5049,6 +5394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1650809686
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5128,6 +5474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1664734986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5437,6 +5784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1757072186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5582,6 +5930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1786058613
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5661,6 +6010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1794502837
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5740,6 +6090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1797036417
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5846,6 +6197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1816699069
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5952,6 +6304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1854422789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6031,6 +6384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1863066514
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6110,6 +6464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &1873015296
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6189,6 +6544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1883516048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6268,6 +6624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1890967929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6452,6 +6809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &1933712747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6531,6 +6889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &2022320245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6598,6 +6957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &2053759442
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6689,6 +7049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &2063983265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6914,6 +7275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &2088406277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6993,6 +7355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 2
   maxHealth: 2
+  independantColor: 0
 --- !u!61 &2120142455
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7072,6 +7435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 1
   maxHealth: 1
+  independantColor: 0
 --- !u!61 &2137842685
 BoxCollider2D:
   m_ObjectHideFlags: 0
