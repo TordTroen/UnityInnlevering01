@@ -37,8 +37,10 @@ public class PlayerManager : MonoBehaviour
 
 	public void OnPlayerLoseHealth(int playerId, bool died)
 	{
-		// TODO update player health texts here (called when a player loses healht)
 		// TODO Reset player that lost health
+
+		// Update player health text
+		GUIManager.instance.UpdatePlayerStats (playerId);
 
 		// Check if all players are dead
 		int alivePlayers = 0;
