@@ -5,13 +5,21 @@ public class BallMovement : MonoBehaviour {
 
 
 	public float movementSpeed;
+	public float speedFactor = 1.2f; // Factor for increasing the speed [currentSpeed += (origingalSpeed * speedFactor / 100)]
+	public bool hasStarted;
+
 	private float xDir = 1;
 	private float yDir = 1;
 	private Vector2 oldVector;
-	public bool hasStarted;
-	public bool inCooldown = false;
-	private int hit = 0; // DEBUG Remove this
+	private int bounces = 0;
 	private Vector2 direction;
+	private float origSpeed;
+	[HideInInspector]public Paddle ownerPaddle;
+
+	void Awake()
+	{
+		origSpeed = movementSpeed;
+	}
 
 	void Start(){
 		direction = new Vector2 (xDir, yDir).normalized;
@@ -25,16 +33,29 @@ public class BallMovement : MonoBehaviour {
 
 	void FixedUpdate () {
 		if(hasStarted){
-			//oldVector = new Vector3 (xDir, yDir, 0.0f);
 			rigidbody2D.velocity = direction * movementSpeed * Time.deltaTime;
 		}
 	}
 
+	/// <summary>
+	/// Starts the ball.
+	/// </summary>
 	public void PlayBall()
 	{
+		// Reset speed
+		ResetSpeed ();
+
+		// Set oldvector
 		oldVector = new Vector2 (xDir, yDir);
+
+		// Unparent from paddle
 		transform.SetParent (null);
+
+		// Set to hasstarted
 		hasStarted = true;
+
+		// Reset bounces
+		bounces = 0;
 	}
 
 	public void ChangeDirectionX(Vector3 normal){
@@ -53,68 +74,36 @@ public class BallMovement : MonoBehaviour {
 
 	void ChangeDirection(Vector3 normal)
 	{
-		direction.x = oldVector.x - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.x));
-		direction.y = oldVector.y - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.y));
+		//direction.x = oldVector.x - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.x));
+		//direction.y = oldVector.y - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.y));
+		direction = Vector3.Reflect (oldVector, normal);
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
 
 		if (hasStarted) // Check if we have started (in case the ball hits something before starting to play)
 		{
-			if(col.gameObject.tag == "Paddle") {
+			if(col.gameObject.tag == "Paddle") 
+			{
 				PaddleCollision(col);
-			} else {
-
-			
-			// Start cooldown (to prevent taking out multiple bricks at the same time)
-			if (col.gameObject.tag == "Brick")
+			} 
+			else 
 			{
-				//inCooldown = true; // Set to incooldown = true
-				StartCoroutine (StartCooldown ());
-				CancelInvoke ("EndCooldown"); // End current invoke, incase one is already running
-				Invoke ("EndCooldown", 0.05f); // Invoke endcooldown
-			}
-
-
-			Vector3 norm = col.contacts [0].normal;
-			/*if (norm.x <= 1f && norm.x >= -1f) { // Horisontalt
-				//print ("hit horizontal");
-				ChangeDirectionY (norm);
-			}
-			if (norm.y <= 1f && norm.y >= -1f) { // Vertikalt
-				//print ("hit vertical");
-				ChangeDirectionX (norm);
-			}
-			else
-			{
-				Debug.Log ("Hit some weird-ass shape [" + col.gameObject + "]");
-			}*/
-			print (col.contacts.Length);
-			ChangeDirection (norm);
+				Vector3 norm = col.contacts [0].normal;
+				//ChangeDirection (norm);
+				ChangeDirection (norm);
 			}
 
 			oldVector = new Vector2 (direction.x, direction.y);
 
-			//print (hit + "_" + norm + "_" + col.contacts.Length);
-			hit ++; // DEBUG Remove this
-
-			
-			// TODO Change xDir when hitting paddle based on distance from center of paddle
+			// Increase bouncecount
+			bounces ++;
+			// Increase speed if 4th or 12th bounce
+			if (bounces == 4 || bounces == 12)
+			{
+				IncreaseSpeed ();
+			}
 		}
-	}
-	
-	/// <summary>
-	/// Ends the cooldown.
-	/// </summary>
-	void EndCooldown()
-	{
-		inCooldown = false;
-	}
-
-	IEnumerator StartCooldown()
-	{
-		yield return new WaitForEndOfFrame();
-		inCooldown = true;
 	}
 
 	void PaddleCollision(Collision2D col){
@@ -124,5 +113,21 @@ public class BallMovement : MonoBehaviour {
 		Vector2 newDirection = difference.normalized;
 		direction.y = newDirection.y;
 		direction.x = newDirection.x;
+	}
+
+	/// <summary>
+	/// Increases the ball speed.
+	/// </summary>
+	public void IncreaseSpeed()
+	{
+		movementSpeed += (origSpeed * speedFactor) * 0.01f;
+	}
+
+	/// <summary>
+	/// Resets the speed.
+	/// </summary>
+	void ResetSpeed()
+	{
+		movementSpeed = origSpeed;
 	}
 }
