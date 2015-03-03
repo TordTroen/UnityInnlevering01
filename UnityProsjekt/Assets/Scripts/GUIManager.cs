@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -24,6 +24,11 @@ public class GUIManager : MonoBehaviour
 	public void UpdatePlayerStats(int playerId)
 	{
 		Paddle player = PlayerManager.instance.allPaddles[playerId];
-		scoreTexts[playerId].text = string.Format ("Lives - {0} Score - {1}", player.curHealth, player.score.ToString ());
+		string divider = " - ";
+		if (playerId == 1 || playerId == 3)
+		{
+			divider = "\n";
+		}
+		scoreTexts[playerId].text = string.Format ("<color=#22df71>{0}{1}</color><color=#26a2df>{2}</color>", player.curHealth, divider, player.score.ToString ());
 	}
 }

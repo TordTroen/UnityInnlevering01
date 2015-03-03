@@ -8,8 +8,8 @@ public class BallMovement : MonoBehaviour {
 	public float speedFactor = 1.2f; // Factor for increasing the speed [currentSpeed += (origingalSpeed * speedFactor / 100)]
 	public bool hasStarted;
 
-	private float xDir = 1;
-	private float yDir = 1;
+	//private float xDir = 1;
+	//private float yDir = 1;
 	private Vector2 oldVector;
 	private int bounces = 0;
 	private Vector2 direction;
@@ -22,7 +22,7 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	void Start(){
-		direction = new Vector2 (xDir, yDir).normalized;
+		direction = new Vector2 (1f, 1f).normalized;
 	}
 
 	void Update(){
@@ -46,7 +46,7 @@ public class BallMovement : MonoBehaviour {
 		ResetSpeed ();
 
 		// Set oldvector
-		oldVector = new Vector2 (xDir, yDir);
+		oldVector = new Vector2 (direction.x, direction.y);
 
 		// Unparent from paddle
 		transform.SetParent (null);
@@ -62,14 +62,12 @@ public class BallMovement : MonoBehaviour {
 		float yNormal = normal.y;
 		float xNormal = normal.x;
 		direction.x = oldVector.x - (2 * ((xNormal * oldVector.x + yNormal * oldVector.y) * xNormal));
-		//xDir = Mathf.Round (xDir);
 	}
 
 	public void ChangeDirectionY(Vector3 normal){
 		float xNormal = normal.x;
 		float yNormal = normal.y;
 		direction.y = oldVector.y - (2 * ((xNormal * oldVector.x + yNormal * oldVector.y) * yNormal));
-		//yDir = Mathf.Round (yDir);
 	}
 
 	void ChangeDirection(Vector3 normal)

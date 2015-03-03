@@ -56,7 +56,8 @@ MonoBehaviour:
   leftKey: 276
   rightKey: 275
   curHealth: 0
-  maxHealth: 3000
+  maxHealth: 3
+  score: 0
   ballPrefab: {fileID: 164260, guid: e41a4cea83fa040219f2cbde890d90dc, type: 2}
   paddleSprites:
   - {fileID: 21300000, guid: 8fa4ae4052ecd472fa60d6bedeb88408, type: 3}

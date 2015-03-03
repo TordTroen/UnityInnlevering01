@@ -57,8 +57,8 @@ public class Paddle : MonoBehaviour {
 		transform.position = new Vector3(
 			Mathf.Clamp (pos.x, GameManager.instance.bottomLeft.x + paddleSize.x + wallInset,
 		             GameManager.instance.topRight.x - paddleSize.x - wallInset),
-			Mathf.Clamp (pos.y, GameManager.instance.bottomLeft.y + paddleSize.x + wallInset,
-		             GameManager.instance.topRight.y - paddleSize.x - wallInset));
+			Mathf.Clamp (pos.y, GameManager.instance.bottomLeft.y + paddleSize.y + wallInset,
+		             GameManager.instance.topRight.y - paddleSize.y - wallInset));
 	}
 
 	/// <summary>
@@ -99,7 +99,7 @@ public class Paddle : MonoBehaviour {
 		IncreaseScore (-score); // Increase score with negative the current score to reset to 0
 
 		// Set paddle position
-		Vector3 pos = Vector3.zero;
+		Vector3 pos = transform.position;
 		transform.position = pos;
 	}
 

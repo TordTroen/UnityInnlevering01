@@ -23,10 +23,20 @@ public class PlayerManager : MonoBehaviour
 	
 	void InitializePlayers()
 	{
+		Vector3[] spawnPositions = new Vector3[4];
+		Vector3 tr = GameManager.instance.topRight;
+		Vector3 bl = GameManager.instance.bottomLeft;
+		Vector3 co = GameManager.instance.centerOfScreen;
+		float margin = GetComponent<ScreenManager>().wallInset + 0.4f;
+		spawnPositions[0] = new Vector3(co.x, bl.y + margin);
+		spawnPositions[1] = new Vector3(bl.x + margin, co.y);
+		spawnPositions[2] = new Vector3(co.x, tr.y - margin);
+		spawnPositions[3] = new Vector3(tr.x - margin, co.y);
+
 		for (int i = 0; i < (int)GameManager.instance.playerMode; i ++)
 		{
 			// Instantiate paddle and get the paddlescript
-			GameObject paddleObject = Instantiate (paddlePrefab, spawnPoints[i].position, Quaternion.identity) as GameObject;
+			GameObject paddleObject = Instantiate (paddlePrefab, spawnPositions[i], Quaternion.identity) as GameObject;
 			Paddle paddle = paddleObject.GetComponent<Paddle>();
 			
 			// Add paddlescript to list and initialize the paddle
