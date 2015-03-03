@@ -9,23 +9,32 @@ public class Paddle : MonoBehaviour {
 
 	public int curHealth;
 	public int maxHealth = 3;
+	public int score;
 
 	public GameObject ballPrefab;
-	public BallMovement ball;
+	public Sprite[] paddleSprites;
 
+	[HideInInspector]public BallMovement ball;
 	[HideInInspector]public int playerId;
 	private float paddleSizeX;
 	private float paddleSizeY;
 	private Vector2 paddleSize;
+	private bool isHalfSize = true;
 	private int invert = 1;
+	private SpriteRenderer spriteRenderer;
+	private BoxCollider2D paddleCollider;
+	private float wallInset;
 
 	void Awake(){
-		// For å avgjøre grensen til paddlen
-		paddleSize = GetComponent<SpriteRenderer>().bounds.extents;
-		//paddleSizeX = GetComponent<SpriteRenderer>().sprite.bounds.extents.x; // Husk å endre når vi legger til vegger
-		//paddleSizeY = GetComponent<SpriteRenderer>().sprite.bounds.extents.y;
+		// Get wallinset from screenmanager
+		wallInset = GameManager.instance.GetComponent<ScreenManager>().wallInset * 0.5f; // (must be on same object as GameManager)
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		paddleCollider = GetComponent<BoxCollider2D>();
+		UpdatePaddleSize ();
 
+		// Instantiate the ball and get it's BallMovement script
 		ball = (Instantiate (ballPrefab, transform.position, Quaternion.identity) as GameObject).GetComponent<BallMovement>();
+		ball.ownerPaddle = this;
 	}
 
 	// Update is called once per frame
@@ -46,13 +55,10 @@ public class Paddle : MonoBehaviour {
 
 		// Apply new position (Clamped inside the screen)
 		transform.position = new Vector3(
-			Mathf.Clamp (pos.x, GameManager.instance.bottomLeft.x + paddleSize.x, GameManager.instance.topRight.x - paddleSize.x),
-			Mathf.Clamp (pos.y, GameManager.instance.bottomLeft.y + paddleSize.x, GameManager.instance.topRight.y - paddleSize.x));
-		/*float xMovement = ((inputMovement * paddleSpeed) * Time.deltaTime) + transform.position.x; // Endring i positionen til paddle'en
-		// Erstatter gammel position med ny position
-		transform.position = new Vector3 (Mathf.Clamp(xMovement, GameManager.instance.bottomLeft.x + paddleSizeX, 
-			                         GameManager.instance.topRight.x - paddleSizeX), 
-			            			 GameManager.instance.bottomLeft.y + paddleSizeY + 0.75f, 0.0f);*/
+			Mathf.Clamp (pos.x, GameManager.instance.bottomLeft.x + paddleSize.x + wallInset,
+		             GameManager.instance.topRight.x - paddleSize.x - wallInset),
+			Mathf.Clamp (pos.y, GameManager.instance.bottomLeft.y + paddleSize.x + wallInset,
+		             GameManager.instance.topRight.y - paddleSize.x - wallInset));
 	}
 
 	/// <summary>
@@ -83,8 +89,18 @@ public class Paddle : MonoBehaviour {
 			invert = -1;
 		}
 
+		// Reset paddlesize
+		SetPaddleSize (true);
+
 		// Initialize the ball
 		ResetBall ();
+
+		// Reset score
+		IncreaseScore (-score); // Increase score with negative the current score to reset to 0
+
+		// Set paddle position
+		Vector3 pos = Vector3.zero;
+		transform.position = pos;
 	}
 
 	public void LoseLife()
@@ -103,15 +119,60 @@ public class Paddle : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Check if paddle has lives.
+	/// </summary>
+	/// <returns><c>true</c> if health > 0; otherwise, <c>false</c>.</returns>
 	public bool IsAlive()
 	{
 		return curHealth > 0;
 	}
 
+	/// <summary>
+	/// Resets the ball.
+	/// </summary>
 	void ResetBall()
 	{
 		ball.hasStarted = false;
 		ball.transform.SetParent (transform);
 		ball.transform.position = transform.position + transform.up * 1f;
+	}
+
+	/// <summary>
+	/// Sets the size of the paddle.
+	/// </summary>
+	/// <param name="fullSize">If set to <c>true</c> the paddle is set to the normal size. Else the size is halved.</param>
+	public void SetPaddleSize(bool fullSize)
+	{
+		if (fullSize && isHalfSize) // Set to fullsize
+		{
+			spriteRenderer.sprite = paddleSprites[0]; // Set sprite
+			paddleCollider.size = new Vector2(2f, 0.25f); // Set collider size
+		}
+		else if (!fullSize && !isHalfSize) // Set to halfsize
+		{
+			spriteRenderer.sprite = paddleSprites[1]; // Set sprite
+			paddleCollider.size = new Vector2(1f, 0.25f); // Set collider size
+		}
+		// Update paddlesize
+		UpdatePaddleSize ();
+
+		// Update isHalfSize bool
+		isHalfSize = !fullSize;
+	}
+
+	/// <summary>
+	/// Updates the size of the paddle. Call when changing the sprite
+	/// </summary>
+	void UpdatePaddleSize()
+	{
+		// For å avgjøre grensen til paddlen
+		paddleSize = spriteRenderer.bounds.extents;
+	}
+
+	public void IncreaseScore(int toAdd)
+	{
+		score += toAdd; // Add to score
+		GUIManager.instance.UpdatePlayerStats (playerId); // Update score texts
 	}
 }
