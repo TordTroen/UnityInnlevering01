@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class Brick : MonoBehaviour
 {
 	public int scoreReward = 1;
-	public int curHealth;
+	private int curHealth;
 	public int maxHealth = 1;
-	public float shrinkSpeed = 1f;
+	private float shrinkSpeed = 10f;
 	private bool shrinking = false;
 	private BoxCollider2D boxCollider;
 	private SpriteRenderer spriteRenderer;

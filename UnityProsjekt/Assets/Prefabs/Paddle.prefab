@@ -56,7 +56,7 @@ MonoBehaviour:
   leftKey: 276
   rightKey: 275
   curHealth: 0
-  maxHealth: 3
+  maxHealth: 3000
   ballPrefab: {fileID: 164260, guid: e41a4cea83fa040219f2cbde890d90dc, type: 2}
   ball: {fileID: 0}
   playerId: 0

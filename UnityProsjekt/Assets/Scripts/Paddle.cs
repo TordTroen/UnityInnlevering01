@@ -93,8 +93,8 @@ public class Paddle : MonoBehaviour {
 		PlayerManager.instance.OnPlayerLoseHealth (playerId, !IsAlive ());
 		if (IsAlive ())
 		{
-			ResetBall ();
-			ball.PlayBall ();
+			//ResetBall ();
+			//ball.PlayBall ();
 		}
 		else
 		{

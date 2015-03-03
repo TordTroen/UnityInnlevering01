@@ -11,6 +11,7 @@ public class BallMovement : MonoBehaviour {
 	public bool hasStarted;
 	public bool inCooldown = false;
 	private int hit = 0; // DEBUG Remove this
+	
 
 	void Update(){
 		if(Input.GetButtonDown("Jump")){
@@ -20,13 +21,14 @@ public class BallMovement : MonoBehaviour {
 
 	void FixedUpdate () {
 		if(hasStarted){
-			oldVector = new Vector3 (xDir, yDir, 0.0f);
+			//oldVector = new Vector3 (xDir, yDir, 0.0f);
 			rigidbody2D.velocity = new Vector3(movementSpeed * xDir, movementSpeed * yDir, 0f) * Time.deltaTime;
 		}
 	}
 
 	public void PlayBall()
 	{
+		oldVector = new Vector3 (xDir, yDir, 0.0f);
 		transform.SetParent (null);
 		hasStarted = true;
 	}
@@ -52,30 +54,6 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-		/*Debug.Log ("1 " + col.gameObject.tag);
-		if (col.gameObject.tag == "PlayerBall") {
-			if(gameObject.tag == "UpperWall")
-			{
-				Vector3 normal = col.contacts[0].normal;
-				col.gameObject.GetComponent<BallMovementVectoring>().ChangeDirectionY(normal);
-				
-			}
-			
-			if(gameObject.tag == "LeftWall"){
-				Vector3 normal = col.contacts[0].normal;
-				col.gameObject.GetComponent<BallMovementVectoring>().ChangeDirectionX(normal);
-			}
-			if(gameObject.tag == "RightWall"){
-				Vector3 normal = col.contacts[0].normal;
-				col.gameObject.GetComponent<BallMovementVectoring>().ChangeDirectionX(normal);
-			} 
-			
-			if(gameObject.tag == "Paddle"){
-				Debug.Log("The ball hit the paddle");
-				Vector3 normal = col.contacts[0].normal;
-				col.gameObject.GetComponent<BallMovementVectoring>().ChangeDirectionY(normal);
-			}
-		}*/
 
 		if (hasStarted) // Check if we have started (in case the ball hits something before starting to play)
 		{
@@ -102,7 +80,10 @@ public class BallMovement : MonoBehaviour {
 			{
 				Debug.Log ("Hit some weird-ass shape [" + col.gameObject + "]");
 			}*/
+			print (col.contacts.Length);
 			ChangeDirection (norm);
+			oldVector = new Vector3 (xDir, yDir, 0.0f);
+
 			//print (hit + "_" + norm + "_" + col.contacts.Length);
 			hit ++; // DEBUG Remove this
 
@@ -110,7 +91,7 @@ public class BallMovement : MonoBehaviour {
 			// TODO Change xDir when hitting paddle based on distance from center of paddle
 		}
 	}
-
+	
 	/// <summary>
 	/// Ends the cooldown.
 	/// </summary>
