@@ -7,11 +7,15 @@ public class BallMovement : MonoBehaviour {
 	public float movementSpeed;
 	private float xDir = 1;
 	private float yDir = 1;
-	private Vector3 oldVector;
+	private Vector2 oldVector;
 	public bool hasStarted;
 	public bool inCooldown = false;
 	private int hit = 0; // DEBUG Remove this
-	
+	private Vector2 direction;
+
+	void Start(){
+		direction = new Vector2 (xDir, yDir).normalized;
+	}
 
 	void Update(){
 		if(Input.GetButtonDown("Jump")){
@@ -22,13 +26,13 @@ public class BallMovement : MonoBehaviour {
 	void FixedUpdate () {
 		if(hasStarted){
 			//oldVector = new Vector3 (xDir, yDir, 0.0f);
-			rigidbody2D.velocity = new Vector3(movementSpeed * xDir, movementSpeed * yDir, 0f) * Time.deltaTime;
+			rigidbody2D.velocity = direction * movementSpeed * Time.deltaTime;
 		}
 	}
 
 	public void PlayBall()
 	{
-		oldVector = new Vector3 (xDir, yDir, 0.0f);
+		oldVector = new Vector2 (xDir, yDir);
 		transform.SetParent (null);
 		hasStarted = true;
 	}
@@ -36,27 +40,32 @@ public class BallMovement : MonoBehaviour {
 	public void ChangeDirectionX(Vector3 normal){
 		float yNormal = normal.y;
 		float xNormal = normal.x;
-		xDir = oldVector.x - (2 * ((xNormal * oldVector.x + yNormal * oldVector.y) * xNormal));
+		direction.x = oldVector.x - (2 * ((xNormal * oldVector.x + yNormal * oldVector.y) * xNormal));
 		//xDir = Mathf.Round (xDir);
 	}
 
 	public void ChangeDirectionY(Vector3 normal){
 		float xNormal = normal.x;
 		float yNormal = normal.y;
-		yDir = oldVector.y - (2 * ((xNormal * oldVector.x + yNormal * oldVector.y) * yNormal));
+		direction.y = oldVector.y - (2 * ((xNormal * oldVector.x + yNormal * oldVector.y) * yNormal));
 		//yDir = Mathf.Round (yDir);
 	}
 
 	void ChangeDirection(Vector3 normal)
 	{
-		xDir = oldVector.x - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.x));
-		yDir = oldVector.y - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.y));
+		direction.x = oldVector.x - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.x));
+		direction.y = oldVector.y - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.y));
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
 
 		if (hasStarted) // Check if we have started (in case the ball hits something before starting to play)
 		{
+			if(col.gameObject.tag == "Paddle") {
+				PaddleCollision(col);
+			} else {
+
+			
 			// Start cooldown (to prevent taking out multiple bricks at the same time)
 			if (col.gameObject.tag == "Brick")
 			{
@@ -82,12 +91,14 @@ public class BallMovement : MonoBehaviour {
 			}*/
 			print (col.contacts.Length);
 			ChangeDirection (norm);
-			oldVector = new Vector3 (xDir, yDir, 0.0f);
+			}
+
+			oldVector = new Vector2 (direction.x, direction.y);
 
 			//print (hit + "_" + norm + "_" + col.contacts.Length);
 			hit ++; // DEBUG Remove this
 
-
+			
 			// TODO Change xDir when hitting paddle based on distance from center of paddle
 		}
 	}
@@ -104,5 +115,14 @@ public class BallMovement : MonoBehaviour {
 	{
 		yield return new WaitForEndOfFrame();
 		inCooldown = true;
+	}
+
+	void PaddleCollision(Collision2D col){
+		Vector2 paddlePos = col.transform.position;
+		Vector2 ballPos = gameObject.transform.position;
+		Vector2 difference = ballPos - paddlePos;
+		Vector2 newDirection = difference.normalized;
+		direction.y = newDirection.y;
+		direction.x = newDirection.x;
 	}
 }
