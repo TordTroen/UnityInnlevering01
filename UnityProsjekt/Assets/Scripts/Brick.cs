@@ -7,6 +7,7 @@ public class Brick : MonoBehaviour
 	public int scoreReward = 1;
 	private int curHealth;
 	public int maxHealth = 1;
+	public bool independantColor = false;
 	private float shrinkSpeed = 10f;
 	private bool shrinking = false;
 	private BoxCollider2D boxCollider;
@@ -26,15 +27,16 @@ public class Brick : MonoBehaviour
 
 	void Update()
 	{
+		// Brick shrinking
 		if (shrinking)
 		{
-			Vector3 scale = transform.localScale;
-			scale -= Vector3.one * shrinkSpeed * Time.deltaTime;
-			if (scale.x <= 0.02f)
+			Vector3 scale = transform.localScale; // Get current scale
+			scale -= Vector3.one * shrinkSpeed * Time.deltaTime; // Decrease scale
+			if (scale.x <= 0.02f) // If scale is small enough
 			{
-				gameObject.SetActive (false);
+				Destroy (gameObject); // Remove brick
 			}
-			transform.localScale = scale;
+			transform.localScale = scale; // Apply new scale
 		}
 	}
 
@@ -42,24 +44,42 @@ public class Brick : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Ball")
 		{
-			if (!other.gameObject.GetComponent<BallMovement>().inCooldown)
+			// Get reference to ball that hit this brick
+			BallMovement hitBall = other.collider.GetComponent<BallMovement>();
+
+			// If orange or red brick, increase ballspeed
+			if (maxHealth == 2 || maxHealth == 3)
 			{
-				curHealth --;
-				if (curHealth <= 0)
-				{
-					//gameObject.SetActive (false);
-					boxCollider.enabled = false;
-					shrinking = true;
-					curHealth = 0;
-				}
-				SetColor ();
+				hitBall.IncreaseSpeed ();
 			}
+
+			// Increase score
+			hitBall.ownerPaddle.IncreaseScore (scoreReward);
+
+			// Decrease health
+			curHealth --;
+
+			// Check if brick has more health
+			if (curHealth <= 0)
+			{
+				// Disable collider
+				boxCollider.enabled = false;
+				// Start shrinking
+				shrinking = true;
+				// Clamp health so it doesn't go below 0 (so it is within the range of the colors array)
+				curHealth = 0;
+			}
+			// Update color
+			SetColor ();
 		}
 	}
 
 	void SetColor()
 	{
-		// Set spritecolor to the correct color from the GameManagers brickColors array
-		spriteRenderer.color = GameManager.instance.brickColors[curHealth];
+		if (!independantColor)
+		{
+			// Set spritecolor to the correct color from the GameManagers brickColors array
+			spriteRenderer.color = GameManager.instance.brickColors[curHealth];
+		}
 	}
 }
