@@ -6,8 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
 	public GameObject paddlePrefab; // Paddle prefab
 	public KeyCombination[] keyCombinations; // All player key combinations
-	public Transform[] spawnPoints; // Spawnpoints TODO Get these dynamically from each level
-	[HideInInspector]public List<Paddle> allPaddles = new List<Paddle>(); // List of all paddles in game
+	public Color[] playerColors; // Al player colors
+	public List<Paddle> allPaddles = new List<Paddle>(); // List of all paddles in game
 
 	public static PlayerManager instance = null;
 
@@ -15,24 +15,24 @@ public class PlayerManager : MonoBehaviour
 	{
 		instance = this;
 	}
-
-	void Start()
-	{
-		InitializePlayers (); // TODO put at start of round
-	}
 	
-	void InitializePlayers()
+	public void InitializePlayers()
 	{
 		Vector3[] spawnPositions = new Vector3[4];
 		Vector3 tr = GameManager.instance.topRight;
 		Vector3 bl = GameManager.instance.bottomLeft;
 		Vector3 co = GameManager.instance.centerOfScreen;
-		float margin = GetComponent<ScreenManager>().wallInset + 0.4f;
+		float margin = GetComponent<ScreenManager>().wallInset + 0.45f;
 		spawnPositions[0] = new Vector3(co.x, bl.y + margin);
 		spawnPositions[1] = new Vector3(bl.x + margin, co.y);
 		spawnPositions[2] = new Vector3(co.x, tr.y - margin);
 		spawnPositions[3] = new Vector3(tr.x - margin, co.y);
 
+		for (int i = 0; i < allPaddles.Count; i ++)
+		{
+			allPaddles[i].DestroyPaddle ();
+		}
+		allPaddles = new List<Paddle>();
 		for (int i = 0; i < (int)GameManager.instance.playerMode; i ++)
 		{
 			// Instantiate paddle and get the paddlescript
@@ -41,14 +41,12 @@ public class PlayerManager : MonoBehaviour
 			
 			// Add paddlescript to list and initialize the paddle
 			allPaddles.Add (paddle);
-			paddle.InitializePaddle (i, keyCombinations[i]);
+			paddle.InitializePaddle (i, keyCombinations[i], playerColors[i]);
 		}
 	}
 
 	public void OnPlayerLoseHealth(int playerId, bool died)
 	{
-		// TODO Reset player that lost health
-
 		// Update player health text
 		GUIManager.instance.UpdatePlayerStats (playerId);
 
@@ -63,7 +61,15 @@ public class PlayerManager : MonoBehaviour
 		}
 		if (alivePlayers <= 0)
 		{
-			// TODO End game
+			GameManager.instance.PlayingToGameOver ();
+		}
+	}
+
+	public void StartPlayers()
+	{
+		for (int i = 0; i < allPaddles.Count; i ++)
+		{
+			allPaddles[i].ball.PlayBall ();
 		}
 	}
 }

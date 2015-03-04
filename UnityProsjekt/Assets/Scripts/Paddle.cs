@@ -13,6 +13,7 @@ public class Paddle : MonoBehaviour {
 
 	public GameObject ballPrefab;
 	public Sprite[] paddleSprites;
+	public Color paddleColor = Color.blue;
 
 	[HideInInspector]public BallMovement ball;
 	[HideInInspector]public int playerId;
@@ -41,11 +42,11 @@ public class Paddle : MonoBehaviour {
 	void Update () {
 		// Get input from left & right key
 		float inputMovement = 0f;
-		if (Input.GetKey (rightKey))
+		if (Input.GetKey (rightKey) && GameManager.instance.gameInProgress)
 		{
 			inputMovement = 1f;
 		}
-		if (Input.GetKey (leftKey))
+		if (Input.GetKey (leftKey) && GameManager.instance.gameInProgress)
 		{
 			inputMovement = -1f;
 		}
@@ -66,8 +67,12 @@ public class Paddle : MonoBehaviour {
 	/// </summary>
 	/// <param name="playerId">Player id.</param>
 	/// <param name="keyCombo">Key combination.</param>
-	public void InitializePaddle(int playerId, KeyCombination keyCombo)
+	public void InitializePaddle(int playerId, KeyCombination keyCombo, Color color)
 	{
+		// Set color
+		paddleColor = color;
+		spriteRenderer.color = paddleColor;
+
 		// Set health
 		curHealth = maxHealth;
 
@@ -111,11 +116,11 @@ public class Paddle : MonoBehaviour {
 		{
 			//ResetBall ();
 			//ball.PlayBall ();
+			SetPaddleSize (true);
 		}
 		else
 		{
-			Destroy (ball.gameObject);
-			Destroy (gameObject);
+			DestroyPaddle ();
 		}
 	}
 
@@ -131,8 +136,9 @@ public class Paddle : MonoBehaviour {
 	/// <summary>
 	/// Resets the ball.
 	/// </summary>
-	void ResetBall()
+	public void ResetBall()
 	{
+		ball.SetOwnerPaddle (this);
 		ball.hasStarted = false;
 		ball.transform.SetParent (transform);
 		ball.transform.position = transform.position + transform.up * 1f;
@@ -174,5 +180,21 @@ public class Paddle : MonoBehaviour {
 	{
 		score += toAdd; // Add to score
 		GUIManager.instance.UpdatePlayerStats (playerId); // Update score texts
+	}
+
+	public void DestroyPaddle()
+	{
+		StartCoroutine (WaitAndDestroyPaddle ());
+	}
+
+	IEnumerator WaitAndDestroyPaddle()
+	{
+		yield return new WaitForEndOfFrame();
+		PlayerManager.instance.allPaddles.Remove (this);
+		if (ball)
+		{
+			Destroy (ball.gameObject);
+		}
+		Destroy (gameObject);
 	}
 }
