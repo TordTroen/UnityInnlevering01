@@ -47,6 +47,12 @@ public class Brick : MonoBehaviour
 			// Get reference to ball that hit this brick
 			BallMovement hitBall = other.collider.GetComponent<BallMovement>();
 
+			// Don't remove if ball has hit more than one thing at the same time
+			if (hitBall.currentHits > 1)
+			{
+				return;
+			}
+
 			// If orange or red brick, increase ballspeed
 			if (maxHealth == 2 || maxHealth == 3)
 			{
@@ -69,6 +75,7 @@ public class Brick : MonoBehaviour
 				// Clamp health so it doesn't go below 0 (so it is within the range of the colors array)
 				curHealth = 0;
 			}
+
 			// Update color
 			SetColor ();
 		}

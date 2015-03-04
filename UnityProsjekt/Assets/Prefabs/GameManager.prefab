@@ -77,6 +77,7 @@ GameObject:
   - 114: {fileID: 11489546}
   - 114: {fileID: 11489550}
   - 114: {fileID: 11489548}
+  - 114: {fileID: 11484492}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -338,6 +339,28 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .78125, y: .78125}
   m_Center: {x: 0, y: 0}
+--- !u!114 &11484492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f9fc809ea134e72b1c23a08dc5e7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainPanel: {fileID: 0}
+  readyPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  countdownText: {fileID: 0}
+  scoreTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11489542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,13 +396,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b148f7717e7dc4ca58854bc5d3cb7f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMode: 4
+  playerMode: 1
   brickColors:
   - {r: .945098042, g: 1, b: 0, a: 1}
   - {r: .945098042, g: 1, b: 0, a: 1}
   - {r: .925490201, g: .654901981, b: 0, a: 1}
   - {r: .858823538, g: 0, b: 0, a: 1}
   - {r: .522058845, g: .0268706698, b: .0268706698, a: 1}
+  gameInProgress: 0
+  isPaused: 0
   topRight: {x: 0, y: 0, z: 0}
   bottomLeft: {x: 0, y: 0, z: 0}
   centerOfScreen: {x: 0, y: 0, z: 0}

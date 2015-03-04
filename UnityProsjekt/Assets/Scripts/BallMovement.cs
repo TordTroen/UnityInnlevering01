@@ -7,7 +7,7 @@ public class BallMovement : MonoBehaviour {
 	public float movementSpeed;
 	public float speedFactor = 1.2f; // Factor for increasing the speed [currentSpeed += (origingalSpeed * speedFactor / 100)]
 	public bool hasStarted;
-
+	
 	//private float xDir = 1;
 	//private float yDir = 1;
 	private Vector2 oldVector;
@@ -15,20 +15,17 @@ public class BallMovement : MonoBehaviour {
 	private Vector2 direction;
 	private float origSpeed;
 	[HideInInspector]public Paddle ownerPaddle;
+	public int currentHits;
+	private SpriteRenderer spriteRenderer;
 
 	void Awake()
 	{
+		spriteRenderer = GetComponent<SpriteRenderer>();
 		origSpeed = movementSpeed;
 	}
 
 	void Start(){
 		direction = new Vector2 (1f, 1f).normalized;
-	}
-
-	void Update(){
-		if(Input.GetButtonDown("Jump")){
-			PlayBall ();
-		}
 	}
 
 	void FixedUpdate () {
@@ -75,17 +72,30 @@ public class BallMovement : MonoBehaviour {
 		//direction.x = oldVector.x - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.x));
 		//direction.y = oldVector.y - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.y));
 		direction = Vector3.Reflect (oldVector, normal);
+		return;
+		if (normal.x <= 1f && normal.x >= -1f) { // Horisontalt
+			//print ("hit horizontal");
+			direction.y *= -1;
+		}
+		else if (normal.y <= 1f && normal.y >= -1f) { // Vertikalt
+			//print ("hit vertical");
+			direction.x *= -1;
+		}
+		else
+		{
+			Debug.Log ("Hit some weird-ass shape");
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-
 		if (hasStarted) // Check if we have started (in case the ball hits something before starting to play)
 		{
 			if(col.gameObject.tag == "Paddle") 
 			{
+				SetOwnerPaddle (col.gameObject.GetComponent<Paddle>());
 				PaddleCollision(col);
 			} 
-			else 
+			else
 			{
 				Vector3 norm = col.contacts [0].normal;
 				//ChangeDirection (norm);
@@ -101,7 +111,13 @@ public class BallMovement : MonoBehaviour {
 			{
 				IncreaseSpeed ();
 			}
+			currentHits ++;
 		}
+	}
+
+	void OnCollisionExit2D(Collision2D col)
+	{
+		currentHits = 0;
 	}
 
 	void PaddleCollision(Collision2D col){
@@ -127,5 +143,16 @@ public class BallMovement : MonoBehaviour {
 	void ResetSpeed()
 	{
 		movementSpeed = origSpeed;
+	}
+
+	public void UpdateColor()
+	{
+		spriteRenderer.color = ownerPaddle.paddleColor;
+	}
+
+	public void SetOwnerPaddle(Paddle newOwner)
+	{
+		//ownerPaddle = newOwner;
+		UpdateColor ();
 	}
 }
