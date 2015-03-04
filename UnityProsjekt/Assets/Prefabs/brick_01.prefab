@@ -53,9 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreReward: 1
-  curHealth: 0
   maxHealth: 1
-  shrinkSpeed: 10
+  independantColor: 0
 --- !u!212 &21279740
 SpriteRenderer:
   m_ObjectHideFlags: 1

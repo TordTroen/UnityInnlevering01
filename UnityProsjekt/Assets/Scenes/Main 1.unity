@@ -33855,6 +33855,7 @@ GameObject:
   - 114: {fileID: 1729576407}
   - 114: {fileID: 1729576410}
   - 114: {fileID: 1729576409}
+  - 114: {fileID: 1729576412}
   - 114: {fileID: 1729576411}
   m_Layer: 0
   m_Name: GameManager
@@ -33882,6 +33883,8 @@ MonoBehaviour:
   - {r: .925490201, g: .654901981, b: 0, a: 1}
   - {r: .858823538, g: 0, b: 0, a: 1}
   - {r: .522058845, g: .0268706698, b: .0268706698, a: 1}
+  gameInProgress: 0
+  isPaused: 0
   topRight: {x: 0, y: 0, z: 0}
   bottomLeft: {x: 0, y: 0, z: 0}
   centerOfScreen: {x: 0, y: 0, z: 0}
@@ -33943,11 +33946,7 @@ MonoBehaviour:
     rightKey: 118
   - leftKey: 106
     rightKey: 109
-  spawnPoints:
-  - {fileID: 1847837438}
-  - {fileID: 1808989875}
-  - {fileID: 1927783577}
-  - {fileID: 760842436}
+  playerColors: []
   allPaddles: []
 --- !u!114 &1729576411
 MonoBehaviour:
@@ -33960,11 +33959,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f9fc809ea134e72b1c23a08dc5e7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainPanel: {fileID: 0}
+  readyPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  countdownText: {fileID: 0}
   scoreTexts:
   - {fileID: 1757246430}
   - {fileID: 332977081}
   - {fileID: 1305358552}
   - {fileID: 1159165719}
+--- !u!114 &1729576412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11484492, guid: 5c3f7c99e301942399688809e8f6c4c6,
+    type: 2}
+  m_PrefabInternal: {fileID: 2064155301}
+  m_GameObject: {fileID: 1729576406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f9fc809ea134e72b1c23a08dc5e7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainPanel: {fileID: 0}
+  readyPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  countdownText: {fileID: 0}
+  scoreTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1736532243
 GameObject:
   m_ObjectHideFlags: 0
