@@ -118,7 +118,7 @@ public class BallMovement : MonoBehaviour {
 	/// </summary>
 	public void IncreaseSpeed()
 	{
-		movementSpeed += (origSpeed * speedFactor) * 0.01f;
+		movementSpeed += (origSpeed * speedFactor) * 0.09f;
 	}
 
 	/// <summary>
