@@ -189,8 +189,11 @@ public class Paddle : MonoBehaviour {
 
 	IEnumerator WaitAndDestroyPaddle()
 	{
-		yield return new WaitForEndOfFrame();
+		yield return new WaitForEndOfFrame(); // Wait to end of frame so other calls to this class does their thing first
+
+		// Remove from playermanager and destroy ball + paddle
 		PlayerManager.instance.allPaddles.Remove (this);
+		// TODO Don't remove here, have a function that wipes it only before initializing, only deactivate here (so scores can be accessed)
 		if (ball)
 		{
 			Destroy (ball.gameObject);

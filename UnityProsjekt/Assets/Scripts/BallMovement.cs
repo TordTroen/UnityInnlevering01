@@ -28,7 +28,7 @@ public class BallMovement : MonoBehaviour {
 		direction = new Vector2 (1f, 1f).normalized;
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		if(hasStarted){
 			rigidbody2D.velocity = direction * movementSpeed * Time.deltaTime;
 		}
@@ -69,9 +69,9 @@ public class BallMovement : MonoBehaviour {
 
 	void ChangeDirection(Vector3 normal)
 	{
-		//direction.x = oldVector.x - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.x));
-		//direction.y = oldVector.y - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.y));
-		direction = Vector3.Reflect (oldVector, normal);
+		direction.x = oldVector.x - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.x));
+		direction.y = oldVector.y - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.y));
+		//direction = Vector3.Reflect (oldVector, normal);
 		return;
 		if (normal.x <= 1f && normal.x >= -1f) { // Horisontalt
 			//print ("hit horizontal");

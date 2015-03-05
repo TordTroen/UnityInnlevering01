@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 	public PlayerMode playerMode = PlayerMode.Single; // Playermode (amount of players)
 	public Color[] brickColors;
+	public Color indestructableColor;
 
 	public bool gameInProgress = false;
 	public bool isPaused = false;

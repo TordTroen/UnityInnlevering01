@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GUIManager : MonoBehaviour
 {
+	public int pregameCountdown = 3;
 	public GameObject mainPanel;
 	public GameObject readyPanel;
 	public GameObject pausePanel;
@@ -23,7 +24,7 @@ public class GUIManager : MonoBehaviour
 	{
 		for (int i = 0; i < scoreTexts.Length; i ++)
 		{
-			scoreTexts[i].gameObject.SetActive (i < (int)GameManager.instance.playerMode);
+			//scoreTexts[i].gameObject.SetActive (i < (int)GameManager.instance.playerMode);
 		}
 	}
 
@@ -40,7 +41,7 @@ public class GUIManager : MonoBehaviour
 
 	public IEnumerator DoCountdown()
 	{
-		for (int i = 1; i >= 0; i --)
+		for (int i = pregameCountdown; i >= 0; i --)
 		{
 			countdownText.text = i.ToString ();
 			yield return new WaitForSeconds(1f);

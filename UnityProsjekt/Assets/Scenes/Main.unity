@@ -623,7 +623,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11489546, guid: 5c3f7c99e301942399688809e8f6c4c6, type: 2}
       propertyPath: playerMode
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c3f7c99e301942399688809e8f6c4c6, type: 2}
@@ -7321,9 +7321,10 @@ GameObject:
   - 114: {fileID: 1729576410}
   - 114: {fileID: 1729576409}
   - 114: {fileID: 1729576411}
+  - 114: {fileID: 1729576412}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7340,13 +7341,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b148f7717e7dc4ca58854bc5d3cb7f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMode: 2
+  playerMode: 4
   brickColors:
   - {r: .945098042, g: 1, b: 0, a: 1}
   - {r: .945098042, g: 1, b: 0, a: 1}
   - {r: .925490201, g: .654901981, b: 0, a: 1}
   - {r: .858823538, g: 0, b: 0, a: 1}
-  - {r: .522058845, g: .0268706698, b: .0268706698, a: 1}
+  indestructableColor: {r: .433823526, g: .433823526, b: .433823526, a: 1}
   gameInProgress: 0
   isPaused: 0
   topRight: {x: 0, y: 0, z: 0}
@@ -7428,6 +7429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f9fc809ea134e72b1c23a08dc5e7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pregameCountdown: 3
   mainPanel: {fileID: 1156593099}
   readyPanel: {fileID: 633335546}
   pausePanel: {fileID: 1711244088}
@@ -7439,6 +7441,38 @@ MonoBehaviour:
   - {fileID: 332977081}
   - {fileID: 1305358552}
   - {fileID: 1159165719}
+--- !u!114 &1729576412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11457440, guid: 5c3f7c99e301942399688809e8f6c4c6,
+    type: 2}
+  m_PrefabInternal: {fileID: 59961070}
+  m_GameObject: {fileID: 1729576406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c78d4c87119e4014930d358db3ade47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genBrickPrefab: {fileID: 166070, guid: a9f607b2ed46a4a7aac39e3ed27347fd, type: 2}
+  gridParent: {fileID: 0}
+  levelViewParent: {fileID: 0}
+  levelItemPrefab: {fileID: 153066, guid: 0852ca009ea7e4dc3bb0730171d58d5f, type: 2}
+  levelItems: []
+  genBricks: []
+  toolId: 0
+  levelString: 
+  gridWidth: 8
+  gridHeight: 10
+  levelName: 
+  bricks:
+  - {fileID: 0}
+  - {fileID: 179740, guid: e0fd5a1f8cc6a47f187af7d22b2805b2, type: 2}
+  - {fileID: 159174, guid: b5e19d874d8354b4996e994baa816593, type: 2}
+  - {fileID: 137450, guid: 9a611781083e24181a196f7a9b2a3a0d, type: 2}
+  input: {fileID: 0}
+  brickWidth: 1
+  brickHeight: .25
+  prevText: 
 --- !u!1 &1757072183
 GameObject:
   m_ObjectHideFlags: 0
