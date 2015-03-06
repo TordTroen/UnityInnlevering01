@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreReward: 4
   maxHealth: 4
+  independantColor: 1
 --- !u!212 &21237450
 SpriteRenderer:
   m_ObjectHideFlags: 1

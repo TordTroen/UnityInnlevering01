@@ -80,11 +80,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a00b9e1b16545c6931e20090e6f54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 900
+  movementSpeed: 600
   speedFactor: 1.20000005
   hasStarted: 0
   ownerPaddle: {fileID: 0}
-  hits: 0
+  currentHits: 0
 --- !u!212 &21264260
 SpriteRenderer:
   m_ObjectHideFlags: 1

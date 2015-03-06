@@ -8,23 +8,24 @@ public class Brick : MonoBehaviour
 	private int curHealth;
 	public int maxHealth = 1;
 	public bool independantColor = false;
+	public GameObject particles;
 	private float shrinkSpeed = 10f;
 	private bool shrinking = false;
 	private BoxCollider2D boxCollider;
 	private SpriteRenderer spriteRenderer;
-
+	
 	void Awake()
 	{
 		boxCollider = GetComponent<BoxCollider2D>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
-
+	
 	void Start()
 	{
 		curHealth = maxHealth;
 		SetColor ();
 	}
-
+	
 	void Update()
 	{
 		// Brick shrinking
@@ -39,32 +40,32 @@ public class Brick : MonoBehaviour
 			transform.localScale = scale; // Apply new scale
 		}
 	}
-
+	
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		if (other.gameObject.tag == "Ball")
 		{
 			// Get reference to ball that hit this brick
 			BallMovement hitBall = other.collider.GetComponent<BallMovement>();
-
+			
 			// Don't remove if ball has hit more than one thing at the same time
 			if (hitBall.currentHits > 1)
 			{
 				return;
 			}
-
+			
 			// If orange or red brick, increase ballspeed
 			if (maxHealth == 2 || maxHealth == 3)
 			{
 				hitBall.IncreaseSpeed ();
 			}
-
+			
 			// Increase score
 			hitBall.ownerPaddle.IncreaseScore (scoreReward);
-
+			
 			// Decrease health
 			curHealth --;
-
+			
 			// Check if brick has more health
 			if (curHealth <= 0)
 			{
@@ -74,13 +75,17 @@ public class Brick : MonoBehaviour
 				shrinking = true;
 				// Clamp health so it doesn't go below 0 (so it is within the range of the colors array)
 				curHealth = 0;
-			}
 
+				// Instantiate brick particlesystem
+				particles.GetComponent<ParticleSystem>().startColor = spriteRenderer.color;
+				Instantiate(particles, transform.position, Quaternion.identity);
+			}
+			
 			// Update color
 			SetColor ();
 		}
 	}
-
+	
 	void SetColor()
 	{
 		if (!independantColor)

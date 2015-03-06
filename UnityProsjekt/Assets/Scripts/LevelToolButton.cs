@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class LevelToolButton : MonoBehaviour, IPointerClickHandler
+public class LevelToolButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
 {
 	public int id;
 	private LevelGenerator lvlGen;
@@ -15,7 +15,20 @@ public class LevelToolButton : MonoBehaviour, IPointerClickHandler
 		img = GetComponent<Image>();
 	}
 
-	public void OnPointerClick(PointerEventData eventData)
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		PaintBrick ();
+	}
+
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		if (Input.GetMouseButton (0))
+		{
+			PaintBrick ();
+		}
+	}
+
+	void PaintBrick()
 	{
 		lvlGen.SetBrick (this);
 	}

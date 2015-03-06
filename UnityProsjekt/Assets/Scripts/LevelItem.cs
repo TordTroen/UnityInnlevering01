@@ -22,6 +22,6 @@ public class LevelItem : MonoBehaviour
 
 	public void LoadLevel()
 	{
-
+		lvlGen.LoadToEditor (levelId);
 	}
 }

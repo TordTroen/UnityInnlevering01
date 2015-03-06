@@ -4,24 +4,33 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+	public bool playingClassic;
+	public AudioClip audioClipWallHit1;
+	public AudioClip audioClipWallHit2;
+	public AudioClip audioClipBrickHit;
+	public bool playFirstClip = true;
+	
 	public PlayerMode playerMode = PlayerMode.Single; // Playermode (amount of players)
 	public Color[] brickColors;
 	public Color indestructableColor;
-
+	
 	public bool gameInProgress = false;
 	public bool isPaused = false;
-
+	
 	[HideInInspector]public Vector3 topRight; // topRight.x = right edge, topRight.y = top edge
 	[HideInInspector]public Vector3 bottomLeft; // bottomLeft.x = left edge, bottomLeft.y = bottom edge
 	[HideInInspector]public Vector3 centerOfScreen; // Center of screen in world coordinates (in case playingfield isn't centered in the scene)
 	public static GameManager instance = null;
-
+	
 	void Awake()
 	{
 		instance = this;
 		UpdateScreenBounds ();
+		if(GameObject.Find("levelClassic").activeInHierarchy){
+			playingClassic = true;
+		}
 	}
-
+	
 	void Update()
 	{
 		if (Input.GetButtonDown ("Pause"))
@@ -36,7 +45,7 @@ public class GameManager : MonoBehaviour
 			}
 		}
 	}
-
+	
 	public void PauseGame()
 	{
 		isPaused = true;
@@ -44,7 +53,7 @@ public class GameManager : MonoBehaviour
 		gameInProgress = false;
 		Time.timeScale = 0f;
 	}
-
+	
 	public void UnPauseGame()
 	{
 		isPaused = false;
@@ -52,33 +61,33 @@ public class GameManager : MonoBehaviour
 		gameInProgress = true;
 		Time.timeScale = 1f;
 	}
-
+	
 	public void MainMenuToReadyGame()
 	{
 		// UI Activate/deactivate
 		GUIManager.instance.mainPanel.SetActive (false);
 		GUIManager.instance.readyPanel.SetActive (true);
-
+		
 		// Calls
 		PlayerManager.instance.InitializePlayers ();
 		StartCoroutine (GUIManager.instance.DoCountdown ());
 	}
-
+	
 	public void ReadyGameToPlaying()
 	{
 		// UI Activate/deactivate
 		GUIManager.instance.readyPanel.SetActive (false);
-
+		
 		// Calls
 		gameInProgress = true;
 		PlayerManager.instance.StartPlayers ();
 	}
-
+	
 	public void PlayingToGameOver()
 	{
 		// UI Activate/deactivate
 		GUIManager.instance.gameOverPanel.SetActive (true);
-
+		
 		// Calls
 		gameInProgress = false;
 		string scoreText = "You got " + PlayerManager.instance.allPaddles[0].score + " points!"; // Scoretext for one player
@@ -92,25 +101,25 @@ public class GameManager : MonoBehaviour
 		}
 		GUIManager.instance.gameOverScoreText.text = scoreText;
 	}
-
+	
 	public void GameOverToReadyGame()
 	{
 		// UI Activate/deactivate
 		GUIManager.instance.gameOverPanel.SetActive (false);
-
+		
 		// Calls
 		MainMenuToReadyGame ();
 	}
-
+	
 	public void GameOverToMainMenu()
 	{
 		// UI Activate/deactivate
 		GUIManager.instance.gameOverPanel.SetActive (false);
 		GUIManager.instance.mainPanel.SetActive (true);
-
+		
 		// Calls
 	}
-
+	
 	/// <summary>
 	/// Updates the screen bounds.
 	/// </summary>

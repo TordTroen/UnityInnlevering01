@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11489542}
   m_Layer: 0
   m_Name: WallLeft
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - 114: {fileID: 11489544}
   m_Layer: 0
   m_Name: WallRight
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,8 +77,9 @@ GameObject:
   - 114: {fileID: 11489546}
   - 114: {fileID: 11489550}
   - 114: {fileID: 11489548}
-  - 114: {fileID: 11484492}
-  - 114: {fileID: 11457440}
+  - 114: {fileID: 11433304}
+  - 82: {fileID: 8253782}
+  - 114: {fileID: 11479896}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -129,7 +130,7 @@ GameObject:
   - 114: {fileID: 11489552}
   m_Layer: 0
   m_Name: WallBottom
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +163,7 @@ GameObject:
   - 114: {fileID: 11489554}
   m_Layer: 0
   m_Name: WallTop
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,38 +341,65 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .78125, y: .78125}
   m_Center: {x: 0, y: 0}
---- !u!114 &11457440
-MonoBehaviour:
+--- !u!82 &8253782
+AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189550}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c78d4c87119e4014930d358db3ade47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  genBrickPrefab: {fileID: 166070, guid: a9f607b2ed46a4a7aac39e3ed27347fd, type: 2}
-  gridParent: {fileID: 0}
-  levelViewParent: {fileID: 0}
-  levelItemPrefab: {fileID: 153066, guid: 0852ca009ea7e4dc3bb0730171d58d5f, type: 2}
-  levelItems: []
-  genBricks: []
-  toolId: 0
-  levelString: 
-  gridWidth: 8
-  gridHeight: 10
-  levelName: 
-  bricks:
-  - {fileID: 0}
-  - {fileID: 179740, guid: e0fd5a1f8cc6a47f187af7d22b2805b2, type: 2}
-  - {fileID: 159174, guid: b5e19d874d8354b4996e994baa816593, type: 2}
-  - {fileID: 137450, guid: 9a611781083e24181a196f7a9b2a3a0d, type: 2}
-  input: {fileID: 0}
-  brickWidth: 1
-  brickHeight: .25
-  prevText: 
---- !u!114 &11484492
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: a5eaebdb9debd4d5687dce6a9391c410, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!114 &11433304
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -394,6 +422,38 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &11479896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c78d4c87119e4014930d358db3ade47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genBrickPrefab: {fileID: 166070, guid: a9f607b2ed46a4a7aac39e3ed27347fd, type: 2}
+  gridParent: {fileID: 0}
+  levelViewParent: {fileID: 0}
+  levelItemPrefab: {fileID: 153066, guid: 0852ca009ea7e4dc3bb0730171d58d5f, type: 2}
+  levelItems: []
+  genBricks: []
+  toolId: 0
+  levelString: 
+  gridWidth: 8
+  gridHeight: 10
+  levelName: 
+  levelNameInput: {fileID: 0}
+  bricks:
+  - {fileID: 0}
+  - {fileID: 179740, guid: e0fd5a1f8cc6a47f187af7d22b2805b2, type: 2}
+  - {fileID: 159174, guid: b5e19d874d8354b4996e994baa816593, type: 2}
+  - {fileID: 137450, guid: 9a611781083e24181a196f7a9b2a3a0d, type: 2}
+  input: {fileID: 0}
+  brickWidth: 1
+  brickHeight: .25
+  prevText: 
 --- !u!114 &11489542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,12 +489,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b148f7717e7dc4ca58854bc5d3cb7f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMode: 1
+  playingClassic: 0
+  audioClipWallHit1: {fileID: 8300000, guid: a5eaebdb9debd4d5687dce6a9391c410, type: 3}
+  audioClipWallHit2: {fileID: 8300000, guid: 0c6e6815e49bb4482bfd4e98a302567f, type: 3}
+  audioClipBrickHit: {fileID: 8300000, guid: 17d16a137b653459bbcda14c017d85c5, type: 3}
+  playFirstClip: 1
+  playerMode: 4
   brickColors:
   - {r: .945098042, g: 1, b: 0, a: 1}
   - {r: .945098042, g: 1, b: 0, a: 1}
   - {r: .925490201, g: .654901981, b: 0, a: 1}
   - {r: .858823538, g: 0, b: 0, a: 1}
+  - {r: .522058845, g: .0268706698, b: .0268706698, a: 1}
   indestructableColor: {r: .433823526, g: .433823526, b: .433823526, a: 1}
   gameInProgress: 0
   isPaused: 0
@@ -480,7 +546,11 @@ MonoBehaviour:
     rightKey: 118
   - leftKey: 106
     rightKey: 109
-  playerColors: []
+  playerColors:
+  - {r: .257352948, g: .569776833, b: 1, a: 1}
+  - {r: 1, g: .257352948, b: .257352948, a: 1}
+  - {r: .257352948, g: 1, b: .262474597, a: 1}
+  - {r: 1, g: .672210932, b: .257352948, a: 1}
   allPaddles: []
 --- !u!114 &11489552
 MonoBehaviour:

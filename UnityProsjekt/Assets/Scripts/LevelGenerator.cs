@@ -16,11 +16,12 @@ public class LevelGenerator : MonoBehaviour
 	public int gridWidth = 8; // TODO define min/max and allow player to change
 	public int gridHeight = 10;
 	public string levelName;
+	public InputField levelNameInput;
 
 	public GameObject[] bricks;
 
 	public InputField input;
-	public float brickWidth = 0.5f;
+	public float brickWidth = 1f;
 	public float brickHeight = 0.25f;
 	public string prevText;
 
@@ -35,6 +36,7 @@ public class LevelGenerator : MonoBehaviour
 
 	void Start()
 	{
+		// TODO Call this when going to the levelgen menu, not in start
 		//genBricks = new List<Transform>(gridParent.GetComponentsInChildren<Transform>());
 		//genBricks.RemoveAt (0);
 
@@ -44,10 +46,27 @@ public class LevelGenerator : MonoBehaviour
 			obj.transform.SetParent (gridParent);
 			genBricks.Add (obj.transform);
 			obj.GetComponent<LevelToolButton>().id = i;
-			levelString += "0";
 		}
 
+		ResetLevelString ();
+
+		// Display all saved levels
 		DisplaySavedLevels ();
+
+		// Select the first tool
+		SelectTool (0);
+	}
+
+	/// <summary>
+	/// Resets the level string (set everything to empty bricks).
+	/// </summary>
+	void ResetLevelString()
+	{
+		levelString = "";
+		for (int i = 0; i < gridWidth * gridHeight; i ++)
+		{
+			levelString += "0";
+		}
 	}
 
 	public void SelectTool(int id)
@@ -59,26 +78,35 @@ public class LevelGenerator : MonoBehaviour
 	public void SetBrick(LevelToolButton button)
 	{
 		// Set visual color of button to correct brick color
-		Color brickColor = GameManager.instance.indestructableColor;
-		if (toolId == 0)
-		{
-			brickColor = Color.white;
-		}
-		else if (toolId < 4)
-		{
-			brickColor = GameManager.instance.brickColors[toolId];
-		}
-		button.img.color = brickColor;
+		UpdateBrickColor (button.img, toolId);
 
 		// Add correct brick id to levelstring
 		levelString = levelString.Remove (button.id, 1);
 		levelString = levelString.Insert (button.id, toolId.ToString ());
 	}
 
+	void UpdateBrickColor(Image image, int colorId)
+	{
+		// Set visual color of button to correct brick color
+		Color brickColor = GameManager.instance.indestructableColor;
+		if (colorId == 0)
+		{
+			brickColor = Color.white;
+		}
+		else if (colorId < 4)
+		{
+			brickColor = GameManager.instance.brickColors[colorId];
+		}
+		image.color = brickColor;
+	}
+
 	public void GenerateLevel()
 	{
 		int i = 0;
-		Vector3 pos = Vector3.zero;
+		float xPos = -(brickWidth + (brickWidth * gridWidth) * 0.5f);
+		float yPos = (brickHeight + (brickHeight * gridHeight)) * 0.5f;
+		Vector3 pos = new Vector3(xPos, yPos);
+		Transform lvlParent = new GameObject("Level_" + levelName).transform;
 
 		// Iterate through the rows
 		for (int y = 0; y < gridHeight; y ++)
@@ -93,14 +121,15 @@ public class LevelGenerator : MonoBehaviour
 				if (bricks[id])
 				{
 					// Instantiate at pos
-					Instantiate (bricks[id], pos, Quaternion.identity);
+					GameObject obj = Instantiate (bricks[id], pos, Quaternion.identity) as GameObject;
+					obj.transform.SetParent (lvlParent);
 				}
 				// Add the brickWidth to the x pos
 				pos.x += brickWidth;
 				i ++;
 			}
 			// Start from the left again on the x axis
-			pos.x = 0f;
+			pos.x = xPos;
 			// Add the brickHeigth to the y pos
 			pos.y -= brickHeight;
 		}
@@ -127,6 +156,15 @@ public class LevelGenerator : MonoBehaviour
 
 	public void SaveLevel()
 	{
+		// Make sure the name is valid
+		if (!ValidName ())
+		{
+			// Notify the player and stop the saving
+			// TODO Notify the player
+			print ("INVALID NAME!");
+			return;
+		}
+
 		// Save level with name to playerprefs
 		PlayerPrefs.SetString (levelSaveKey + curLevelSaveId, levelName + "\n" + levelString);
 		// Increment id save WARNING: must only be done from here, or else problems will occur
@@ -134,21 +172,11 @@ public class LevelGenerator : MonoBehaviour
 		// Save the new levelId
 		PlayerPrefs.SetInt (curLevelIdKey, curLevelSaveId);
 
+		// Make sure Unity saves the prefs to file in case a crash before Unity does it automatically
 		PlayerPrefs.Save ();
 
+		// Display all levels
 		DisplaySavedLevels ();
-	}
-
-	public void ListAllLevels()
-	{
-		// TODO Load all levels here and extract levelnames
-		// TODO Display in a list
-	}
-
-	public void LoadLevel(int id)
-	{
-		PlayerPrefs.GetString (levelSaveKey + id);
-		// TODO Display level to previes here
 	}
 
 	string GetLevelPref(int id)
@@ -156,11 +184,30 @@ public class LevelGenerator : MonoBehaviour
 		return PlayerPrefs.GetString (levelSaveKey + id);
 	}
 
-	string GetLevelName(int id)
+	/*string GetLevelName(int id)
 	{
-		string name = GetLevelPref (id).Split(new string[] { "\r\n", "\n" }, System.StringSplitOptions.None)[0];
-		print (name);
-		return name;
+		return GetLevelPref (id).Split(new string[] { "\r\n", "\n" }, System.StringSplitOptions.None)[0];
+	}
+
+	string GetLevelString(int id)
+	{
+		return GetLevelPref (id).Split(new string[] { "\r\n", "\n" }, System.StringSplitOptions.None)[1];
+	}*/
+
+	/// <summary>
+	/// Returns the level pref (either name or levelstring) of id. 
+	/// </summary>
+	/// <returns>The level.</returns>
+	/// <param name="id">Level id.</param>
+	/// <param name="name">If set to <c>true</c> returns the name, otherwise returns the levelstring.</param>
+	string GetLevel(int id, bool name)
+	{
+		int lineNumber = 0;
+		if (!name)
+		{
+			lineNumber = 1;
+		}
+		return GetLevelPref (id).Split(new string[] { "\r\n", "\n" }, System.StringSplitOptions.None)[lineNumber];
 	}
 
 	void DisplaySavedLevels()
@@ -173,11 +220,11 @@ public class LevelGenerator : MonoBehaviour
 
 		for (int i = 0; i < curLevelSaveId; i ++)
 		{
-			if (GetLevelName (i).Length > 0)
+			if (GetLevel (i, true).Length > 0)
 			{
 				GameObject obj = Instantiate (levelItemPrefab) as GameObject;
 				obj.transform.SetParent (levelViewParent);
-				obj.GetComponent<LevelItem>().Initialize (i, GetLevelName (i), this);
+				obj.GetComponent<LevelItem>().Initialize (i, GetLevel (i, true), this);
 				levelItems.Add (obj);
 			}
 		}
@@ -200,82 +247,78 @@ public class LevelGenerator : MonoBehaviour
 		PlayerPrefs.DeleteKey (levelSaveKey + id);
 		DisplaySavedLevels ();
 	}
+
+	public void LoadToEditor(int id)
+	{
+		// Get leveltring and name
+		string lvl = GetLevel (id, false);
+		string name = GetLevel (id, true);
+
+		// Update bricks
+		for (int i = 0; i < lvl.Length; i ++)
+		{
+			UpdateBrickColor (genBricks[i].GetComponent<LevelToolButton>().img, CharToId (lvl[i]));
+		}
+
+		// Set levelstring and input to loaded string
+		levelString = lvl;
+		levelNameInput.text = name;
+	}
+
+	public void ClearEditor()
+	{
+		// Clear levelname and name input
+		levelName = "";
+		levelNameInput.text = "";
+		// Clear levelstring
+		ResetLevelString ();
+
+		// Clear editorbricks
+		for (int i = 0; i < levelString.Length; i ++)
+		{
+			UpdateBrickColor (genBricks[i].GetComponent<LevelToolButton>().img, CharToId (levelString[i]));
+		}
+	}
+
+	bool ValidName()
+	{
+		// Check if levelname is null or empty
+		if (string.IsNullOrEmpty (levelName))
+		{
+			return false;
+		}
+
+		// Check if levelname contains something other than whitespaces
+		for (int i = 0; i < levelName.Length; i ++)
+		{
+			if (levelName[i] != ' ')
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void DeleteAllLevels()
+	{
+		// TODO Notify player first
+
+		// Delete all keys
+		PlayerPrefs.DeleteAll ();
+
+		// Reset level save id
+		PlayerPrefs.SetInt (curLevelIdKey, 0);
+		curLevelSaveId = GetLevelIdFromPrefs ();
+
+		PlayerPrefs.Save ();
+
+		DisplaySavedLevels ();
+	}
+
 	/*
 	 * 1. Turn GO grid into string
 	 * 2. Save string
 	 * 3. Load string
 	 * 4. Convert string to grid
 	 */
-
-
-	/*void Start()
-	{
-		input.text = "00000000\n00000000\n00000000\n00000000\n00000000\n00000000";
-		prevText = input.text;
-	}
-
-	public void GenerateLevel()
-	{
-		string text = input.text;
-
-		List<string> rows = text.LinesToList ("\n", false);
-		Vector3 pos = Vector3.zero;
-		for (int y = 0; y < rows.Count; y ++)
-		{
-			char[] chars = rows[y].ToCharArray ();
-			for (int x = 0; x < chars.Length; x ++)
-			{
-				int id = chars[x] - 48;
-				if (bricks[id])
-				{
-					Instantiate (bricks[id], pos, Quaternion.identity);
-				}
-				pos.x += brickWidth;
-			}
-			pos.x = 0f;
-			pos.y -= brickHeight;
-		}
-	}
-
-	public void ValidateInput(string text)
-	{
-		// TODO check if character is valid, then replace pressed character with 0
-		// TODO call on valuechange
-		string newText = text;
-
-		if (text.Length > prevText.Length) // Inputted character
-		{
-			for (int i = 0; i < text.Length; i ++)
-			{
-				if (i >= prevText.Length || text[i] != prevText[i])
-				{
-
-				}
-			}
-		}
-		else // Removed character
-		{
-
-		}
-		text = text.Replace ("\n", "");
-		for (int i = 0; i < text.Length; i ++)
-		{
-			if (i % 9 == 0)
-			{
-				text = text.Insert (i, "\n");
-				print ("linebreak");
-			}
-		}
-		text = text.Remove (0, 1);
-
-
-		input.text = text;
-		prevText = text;
-	}
-
-	bool ValidCharacter(char chr)
-	{
-		// TODO check if character is inside bricks array range
-		return chr - 48 >= 0 && chr - 48 < bricks.Length;
-	}*/
 }
