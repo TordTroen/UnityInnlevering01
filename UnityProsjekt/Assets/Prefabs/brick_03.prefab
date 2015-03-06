@@ -53,9 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreReward: 3
-  curHealth: 0
   maxHealth: 3
-  shrinkSpeed: 10
+  independantColor: 0
+  particles: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
 --- !u!212 &21237450
 SpriteRenderer:
   m_ObjectHideFlags: 1

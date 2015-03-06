@@ -412,9 +412,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pregameCountdown: 3
   mainPanel: {fileID: 0}
+  levelSelectPanel: {fileID: 0}
+  levelEditorPanel: {fileID: 0}
+  settingsPanel: {fileID: 0}
   readyPanel: {fileID: 0}
   pausePanel: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  classicLevelButton: {fileID: 0}
+  classicLevelText: {fileID: 0}
   gameOverScoreText: {fileID: 0}
   countdownText: {fileID: 0}
   scoreTexts:
@@ -422,13 +427,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerModeText: {fileID: 0}
 --- !u!114 &11479896
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c78d4c87119e4014930d358db3ade47, type: 3}
   m_Name: 
@@ -489,12 +495,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b148f7717e7dc4ca58854bc5d3cb7f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: {fileID: 0}
+  levelSelectPrefab: {fileID: 182292, guid: cd992f8f0f1094a9881d98d56b762056, type: 2}
+  standardLevelPrefabs: []
+  standardLevelsParent: {fileID: 0}
+  customLevelsParent: {fileID: 0}
   playingClassic: 0
   audioClipWallHit1: {fileID: 8300000, guid: a5eaebdb9debd4d5687dce6a9391c410, type: 3}
   audioClipWallHit2: {fileID: 8300000, guid: 0c6e6815e49bb4482bfd4e98a302567f, type: 3}
   audioClipBrickHit: {fileID: 8300000, guid: 17d16a137b653459bbcda14c017d85c5, type: 3}
   playFirstClip: 1
-  playerMode: 4
+  playerMode: 1
   brickColors:
   - {r: .945098042, g: 1, b: 0, a: 1}
   - {r: .945098042, g: 1, b: 0, a: 1}

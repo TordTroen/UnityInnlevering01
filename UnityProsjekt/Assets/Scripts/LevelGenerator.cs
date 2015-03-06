@@ -24,22 +24,29 @@ public class LevelGenerator : MonoBehaviour
 	public float brickWidth = 1f;
 	public float brickHeight = 0.25f;
 	public string prevText;
-
+	
 	private string levelSaveKey = "customlevel_";
 	private string curLevelIdKey = "levelId_";
 	private int curLevelSaveId = 0;
 
+	public static LevelGenerator instance;
+
 	void Awake()
 	{
+		instance = this;
 		curLevelSaveId = GetLevelIdFromPrefs ();
 	}
 
-	void Start()
+	public void InitializeLevelEditor()
 	{
 		// TODO Call this when going to the levelgen menu, not in start
 		//genBricks = new List<Transform>(gridParent.GetComponentsInChildren<Transform>());
 		//genBricks.RemoveAt (0);
-
+		foreach(Transform t in genBricks)
+		{
+			Destroy (t);
+		}
+		genBricks = new List<Transform>();
 		for (int i = 0; i < gridWidth * gridHeight; i ++)
 		{
 			GameObject obj = Instantiate (genBrickPrefab) as GameObject;
@@ -47,12 +54,12 @@ public class LevelGenerator : MonoBehaviour
 			genBricks.Add (obj.transform);
 			obj.GetComponent<LevelToolButton>().id = i;
 		}
-
+		
 		ResetLevelString ();
-
+		
 		// Display all saved levels
 		DisplaySavedLevels ();
-
+		
 		// Select the first tool
 		SelectTool (0);
 	}
@@ -102,12 +109,17 @@ public class LevelGenerator : MonoBehaviour
 
 	public void GenerateLevel()
 	{
+		GenerateLevel (levelString);
+	}
+
+	public GameObject GenerateLevel(string lvlString)
+	{
 		int i = 0;
 		float xPos = -(brickWidth + (brickWidth * gridWidth) * 0.5f);
 		float yPos = (brickHeight + (brickHeight * gridHeight)) * 0.5f;
 		Vector3 pos = new Vector3(xPos, yPos);
 		Transform lvlParent = new GameObject("Level_" + levelName).transform;
-
+		
 		// Iterate through the rows
 		for (int y = 0; y < gridHeight; y ++)
 		{
@@ -115,8 +127,8 @@ public class LevelGenerator : MonoBehaviour
 			for (int x = 0; x < gridWidth; x ++)
 			{
 				// Convert the character to an int
-				int id = CharToId (levelString[i]);
-
+				int id = CharToId (lvlString[i]);
+				
 				// If there is a brick in the array (the first is empty, because the first brick is empty...)
 				if (bricks[id])
 				{
@@ -133,6 +145,8 @@ public class LevelGenerator : MonoBehaviour
 			// Add the brickHeigth to the y pos
 			pos.y -= brickHeight;
 		}
+
+		return lvlParent.gameObject;
 	}
 
 	int CharToId(char c)
@@ -200,7 +214,7 @@ public class LevelGenerator : MonoBehaviour
 	/// <returns>The level.</returns>
 	/// <param name="id">Level id.</param>
 	/// <param name="name">If set to <c>true</c> returns the name, otherwise returns the levelstring.</param>
-	string GetLevel(int id, bool name)
+	public string GetLevel(int id, bool name)
 	{
 		int lineNumber = 0;
 		if (!name)
@@ -230,7 +244,7 @@ public class LevelGenerator : MonoBehaviour
 		}
 	}
 
-	int GetLevelIdFromPrefs()
+	public int GetLevelIdFromPrefs()
 	{
 		return PlayerPrefs.GetInt (curLevelIdKey);
 	}
@@ -302,7 +316,6 @@ public class LevelGenerator : MonoBehaviour
 	public void DeleteAllLevels()
 	{
 		// TODO Notify player first
-
 		// Delete all keys
 		PlayerPrefs.DeleteAll ();
 

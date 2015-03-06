@@ -77,6 +77,7 @@ public class Brick : MonoBehaviour
 				curHealth = 0;
 
 				// Instantiate brick particlesystem
+				// TODO Implement pooling for particles
 				particles.GetComponent<ParticleSystem>().startColor = spriteRenderer.color;
 				Instantiate(particles, transform.position, Quaternion.identity);
 			}

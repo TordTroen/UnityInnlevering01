@@ -5,22 +5,45 @@ using System;
 
 public static class Utils
 {
-	public static List<string> LinesToList(this string s, string seperator, bool removeEmptyLines)
+	public static int IncrementDecrement(this int i, int min, int max, bool increment, bool wrapAround)
 	{
-		// Split string into list
-		List<string> list = new List<string>(s.Split(new string[] { seperator }, StringSplitOptions.RemoveEmptyEntries));
-		
-		// Remove empyt lines
-		if (removeEmptyLines)
+		if (increment)
 		{
-			for (int i = 0; i < list.Count; i ++)
+			if (wrapAround)
 			{
-				if (list[i].Length <= 1)
+				i ++;
+				if (i >= max)
 				{
-					list.RemoveAt(i);
+					i = min;
+				}
+			}
+			else
+			{
+				if (i < max - 1)
+				{
+					i ++;
 				}
 			}
 		}
-		return list;
+		else
+		{
+			if (wrapAround)
+			{
+				i --;
+				if (i < min)
+				{
+					i = max - 1;
+				}
+			}
+			else
+			{
+				if (i > min)
+				{
+					i --;
+				}
+			}
+		}
+		
+		return i;
 	}
 }

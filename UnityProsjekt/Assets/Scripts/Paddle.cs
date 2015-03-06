@@ -184,10 +184,28 @@ public class Paddle : MonoBehaviour {
 
 	public void DestroyPaddle()
 	{
-		StartCoroutine (WaitAndDestroyPaddle ());
+		//StartCoroutine (WaitAndDeactivatePaddle ());
+		if (ball)
+		{
+			ball.gameObject.SetActive (false);
+		}
+		gameObject.SetActive (false);
 	}
 
-	IEnumerator WaitAndDestroyPaddle()
+	public IEnumerator TerminatePaddle()
+	{
+		yield return new WaitForEndOfFrame(); // Wait to end of frame so other calls to this class does their thing first
+		
+		// Remove from playermanager and destroy ball + paddle
+		PlayerManager.instance.allPaddles.Remove (this);
+		if (ball)
+		{
+			Destroy (ball.gameObject);
+		}
+		Destroy (gameObject);
+	}
+
+	/*IEnumerator WaitAndDeactivatePaddle()
 	{
 		yield return new WaitForEndOfFrame(); // Wait to end of frame so other calls to this class does their thing first
 
@@ -202,5 +220,5 @@ public class Paddle : MonoBehaviour {
 		gameObject.SetActive (false);
 		//Destroy (gameObject);
 
-	}
+	}*/
 }

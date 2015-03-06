@@ -4,6 +4,13 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+	public GameObject currentLevel;
+	public GameObject levelSelectPrefab;
+	public GameObject[] standardLevelPrefabs;
+	public Transform standardLevelsParent;
+	public Transform customLevelsParent;
+	public List<GameObject> instantiatedLevelitems = new List<GameObject>();
+
 	public bool playingClassic;
 	public AudioClip audioClipWallHit1;
 	public AudioClip audioClipWallHit2;
@@ -16,7 +23,7 @@ public class GameManager : MonoBehaviour
 	
 	public bool gameInProgress = false;
 	public bool isPaused = false;
-	
+
 	[HideInInspector]public Vector3 topRight; // topRight.x = right edge, topRight.y = top edge
 	[HideInInspector]public Vector3 bottomLeft; // bottomLeft.x = left edge, bottomLeft.y = bottom edge
 	[HideInInspector]public Vector3 centerOfScreen; // Center of screen in world coordinates (in case playingfield isn't centered in the scene)
@@ -26,9 +33,6 @@ public class GameManager : MonoBehaviour
 	{
 		instance = this;
 		UpdateScreenBounds ();
-		if(GameObject.Find("levelClassic").activeInHierarchy){
-			playingClassic = true;
-		}
 	}
 	
 	void Update()
@@ -45,7 +49,59 @@ public class GameManager : MonoBehaviour
 			}
 		}
 	}
+
+	public void PlayClassicLevel()
+	{
+		playingClassic = true;
+	}
+
+	public void SetCurrentLevel(GameObject curLevel)
+	{
+		currentLevel = curLevel;
+	}
 	
+	public void WipeCurrentLevel()
+	{
+		// TODO Call when finished Going from a level
+		Destroy (currentLevel);
+		currentLevel = null;
+		playingClassic = false;
+	}
+
+	public void ReloadLevel()
+	{
+
+	}
+
+	public void DisplayLevels()
+	{
+		foreach(GameObject obj in instantiatedLevelitems)
+		{
+			Destroy (obj);
+		}
+		instantiatedLevelitems = new List<GameObject>();
+
+		// Standard levels
+		for (int i = 0; i < standardLevelPrefabs.Length; i ++)
+		{
+			GameObject lvlItem = Instantiate (levelSelectPrefab) as GameObject;
+			lvlItem.transform.SetParent (standardLevelsParent);
+			lvlItem.GetComponent<Level>().InitObject (standardLevelPrefabs[i]);
+			instantiatedLevelitems.Add (lvlItem);
+		}
+
+		// Custom levels
+		for (int i = 0; i < LevelGenerator.instance.GetLevelIdFromPrefs (); i ++)
+		{
+			string levelString = LevelGenerator.instance.GetLevel (i, false);
+			string levelName = LevelGenerator.instance.GetLevel (i, true);
+			GameObject lvlItem = Instantiate (levelSelectPrefab) as GameObject;
+			lvlItem.transform.SetParent (customLevelsParent);
+			lvlItem.GetComponent<Level>().InitObject (levelString, levelName);
+			instantiatedLevelitems.Add (lvlItem);
+		}
+	}
+
 	public void PauseGame()
 	{
 		isPaused = true;
@@ -119,7 +175,61 @@ public class GameManager : MonoBehaviour
 		
 		// Calls
 	}
-	
+
+	public void MainMenuToSettings()
+	{
+		// UI Activate/deactivate
+		GUIManager.instance.gameOverPanel.SetActive (false);
+		GUIManager.instance.mainPanel.SetActive (true);
+		
+		// Calls
+	}
+
+	public void SettingsToMainMenu()
+	{
+		// UI Activate/deactivate
+		GUIManager.instance.gameOverPanel.SetActive (false);
+		GUIManager.instance.mainPanel.SetActive (true);
+		
+		// Calls
+	}
+
+	public void MainMenuToLevelSelect()
+	{
+		// UI Activate/deactivate
+		GUIManager.instance.gameOverPanel.SetActive (false);
+		GUIManager.instance.mainPanel.SetActive (true);
+		
+		// Calls
+	}
+
+	public void LevelSelectToMainMenu()
+	{
+		// UI Activate/deactivate
+		GUIManager.instance.gameOverPanel.SetActive (false);
+		GUIManager.instance.mainPanel.SetActive (true);
+		
+		// Calls
+	}
+
+	public void MainMenuToLevelEditor()
+	{
+		// UI Activate/deactivate
+		GUIManager.instance.gameOverPanel.SetActive (false);
+		GUIManager.instance.mainPanel.SetActive (true);
+		
+		// Calls
+	}
+
+	public void LevelEditorToMainMenu()
+	{
+		// UI Activate/deactivate
+		GUIManager.instance.gameOverPanel.SetActive (false);
+		GUIManager.instance.mainPanel.SetActive (true);
+		
+		// Calls
+	}
+
 	/// <summary>
 	/// Updates the screen bounds.
 	/// </summary>

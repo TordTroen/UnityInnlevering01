@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour
 		}
 		if (alivePlayers <= 0)
 		{
-			GameManager.instance.PlayingToGameOver ();
+			GUIManager.instance.PlayingToGameOver ();
 		}
 	}
 

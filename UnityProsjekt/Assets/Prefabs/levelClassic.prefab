@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &128482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 428482}
+  - 114: {fileID: 11428482}
+  m_Layer: 0
+  m_Name: levelClassic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &428482
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11428482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf3f5e38b43948bbb0ba972884448ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brickLayers:
+  - {fileID: 127302, guid: 730740b91891f4355ad3b8f5a0f15531, type: 2}
+  - {fileID: 111242, guid: 7cc11f5f9c05f48d9821576578b9962d, type: 2}
+  - {fileID: 179740, guid: e0fd5a1f8cc6a47f187af7d22b2805b2, type: 2}
+  - {fileID: 127262, guid: 76e2e174c0f6548f5b44554da8cbb25e, type: 2}
+  - {fileID: 107458, guid: 78f163c28fcf542ec9e4e0a512925578, type: 2}
+  - {fileID: 131130, guid: 47b852b1c172349539d1f02c8fb22d8b, type: 2}
+  bricksInRow: 8
+  tileHeight: .25
+  offsetFromCenter: 0
+  colliderMod: {x: 0, y: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 128482}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

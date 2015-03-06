@@ -1216,7 +1216,7 @@ GameObject:
   - 4: {fileID: 413284}
   - 114: {fileID: 11439680}
   m_Layer: 0
-  m_Name: level1
+  m_Name: level2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4143,7 +4143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804fe214fa4b9418f9073b0eda986793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: The Eye
+  levelName: Eyeball
 --- !u!212 &21213152
 SpriteRenderer:
   m_ObjectHideFlags: 1
