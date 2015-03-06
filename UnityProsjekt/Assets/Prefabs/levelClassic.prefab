@@ -48,7 +48,7 @@ MonoBehaviour:
   - {fileID: 131130, guid: 47b852b1c172349539d1f02c8fb22d8b, type: 2}
   bricksInRow: 8
   tileHeight: .25
-  offsetFromCenter: 0
+  offsetFromCenter: 2
   colliderMod: {x: 0, y: 0}
 --- !u!1001 &100100000
 Prefab:
