@@ -5,6 +5,7 @@ public class BallMovement : MonoBehaviour {
 	
 	
 	public float movementSpeed;
+	public float angleStrength; // the sesitivity of the new angle the ball gets when it collides with the paddle
 	public float speedFactor = 1.2f; // Factor for increasing the speed [currentSpeed += (origingalSpeed * speedFactor / 100)]
 	public bool hasStarted;
 	
@@ -135,6 +136,7 @@ public class BallMovement : MonoBehaviour {
 		Vector2 paddlePos = col.transform.position;
 		Vector2 ballPos = gameObject.transform.position;
 		Vector2 difference = ballPos - paddlePos;
+		difference.x = difference.x * angleStrength / 100f;
 		Vector2 newDirection = difference.normalized;
 		direction.y = newDirection.y;
 		direction.x = newDirection.x;
