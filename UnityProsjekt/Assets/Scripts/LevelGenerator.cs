@@ -9,22 +9,20 @@ public class LevelGenerator : MonoBehaviour
 	public Transform gridParent;
 	public Transform levelViewParent;
 	public GameObject levelItemPrefab;
-	public List<GameObject> levelItems = new List<GameObject>();
-	public List<Transform> genBricks = new List<Transform>();
-	public int toolId;
-	public string levelString;
-	public int gridWidth = 8; // TODO define min/max and allow player to change
+	public List<GameObject> levelItems = new List<GameObject>(); // TODO Private
+	public List<Transform> genBricks = new List<Transform>(); // TODO Private
+	public int toolId; // TODO Private
+	public string levelString; // TODO Private
+	public int gridWidth = 8;
 	public int gridHeight = 10;
-	public string levelName;
+	public string levelName; // TODO Private
 	public InputField levelNameInput;
 
 	public GameObject[] bricks;
 
-	public InputField input;
 	public float brickWidth = 1f;
 	public float brickHeight = 0.25f;
-	public string prevText;
-	
+
 	private string levelSaveKey = "customlevel_";
 	private string curLevelIdKey = "levelId_";
 	private int curLevelSaveId = 0;
@@ -54,7 +52,13 @@ public class LevelGenerator : MonoBehaviour
 			genBricks.Add (obj.transform);
 			obj.GetComponent<LevelToolButton>().id = i;
 		}
-		
+		float space = 3f;
+		float width = ((RectTransform)gridParent).rect.width / gridWidth - space;
+		GridLayoutGroup glg = gridParent.GetComponent<GridLayoutGroup>();
+		glg.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+		glg.constraintCount = gridWidth;
+		glg.cellSize = new Vector2(width, width * 0.25f);  //.GetComponent<RectTransform>()
+
 		ResetLevelString ();
 		
 		// Display all saved levels
@@ -109,17 +113,18 @@ public class LevelGenerator : MonoBehaviour
 
 	public void GenerateLevel()
 	{
-		GenerateLevel (levelString);
+		GenerateLevel (levelString, levelName); // TODO Remove
 	}
 
-	public GameObject GenerateLevel(string lvlString)
+	public GameObject GenerateLevel(string lvlString, string name)
 	{
 		int i = 0;
 		float xPos = -(brickWidth + (brickWidth * gridWidth) * 0.5f);
 		float yPos = (brickHeight + (brickHeight * gridHeight)) * 0.5f;
 		Vector3 pos = new Vector3(xPos, yPos);
-		Transform lvlParent = new GameObject("Level_" + levelName).transform;
-		
+		Transform lvlParent = new GameObject("Level_" + name, typeof(LevelInfo)).transform;
+		lvlParent.GetComponent<LevelInfo>().InitializeInfo (lvlString, name);
+
 		// Iterate through the rows
 		for (int y = 0; y < gridHeight; y ++)
 		{

@@ -7,6 +7,7 @@ public class Brick : MonoBehaviour
 	public int scoreReward = 1;
 	private int curHealth;
 	public int maxHealth = 1;
+	public bool indestructible = false;
 	public bool independantColor = false;
 	public GameObject particles;
 	private float shrinkSpeed = 10f;
@@ -43,7 +44,7 @@ public class Brick : MonoBehaviour
 	
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		if (other.gameObject.tag == "Ball")
+		if (other.gameObject.tag == "Ball" && !indestructible)
 		{
 			// Get reference to ball that hit this brick
 			BallMovement hitBall = other.collider.GetComponent<BallMovement>();
@@ -60,15 +61,15 @@ public class Brick : MonoBehaviour
 				hitBall.IncreaseSpeed ();
 			}
 			
-			// Increase score
-			hitBall.ownerPaddle.IncreaseScore (scoreReward);
-			
 			// Decrease health
 			curHealth --;
 			
 			// Check if brick has more health
 			if (curHealth <= 0)
 			{
+				// Increase score
+				hitBall.ownerPaddle.IncreaseScore (scoreReward);
+
 				// Disable collider
 				boxCollider.enabled = false;
 				// Start shrinking

@@ -13,6 +13,7 @@ public class GUIManager : MonoBehaviour
 	public GameObject readyPanel;
 	public GameObject pausePanel;
 	public GameObject gameOverPanel;
+	public GameObject hudScorePanel;
 
 	public Button classicLevelButton;
 	public Text classicLevelText;
@@ -32,10 +33,8 @@ public class GUIManager : MonoBehaviour
 
 	void Start()
 	{
-		for (int i = 0; i < scoreTexts.Length; i ++)
-		{
-			//scoreTexts[i].gameObject.SetActive (i < (int)GameManager.instance.playerMode);
-		}
+		TogglePlayerHudScores ();
+		hudScorePanel.SetActive (false);
 	}
 
 	public void UpdatePlayerStats(int playerId)
@@ -47,6 +46,14 @@ public class GUIManager : MonoBehaviour
 			divider = "\n";
 		}
 		scoreTexts[playerId].text = string.Format ("<color=#22df71>{0}{1}</color><color=#26a2df>{2}</color>", player.curHealth, divider, player.score.ToString ());
+	}
+
+	void TogglePlayerHudScores()
+	{
+		for (int i = 0; i < scoreTexts.Length; i ++)
+		{
+			scoreTexts[i].gameObject.SetActive (i < (int)GameManager.instance.playerMode);
+		}
 	}
 
 	public IEnumerator DoCountdown()
@@ -80,6 +87,8 @@ public class GUIManager : MonoBehaviour
 			playerString = playerNumber + " PLAYERS";
 		}
 		playerModeText.text = playerString;
+
+		TogglePlayerHudScores ();
 	}
 
 	public void ToggleSound(bool active){
@@ -135,7 +144,7 @@ public class GUIManager : MonoBehaviour
 		// UI Activate/deactivate
 		levelSelectPanel.SetActive (false);
 		readyPanel.SetActive (true);
-		
+
 		// Calls
 		PlayerManager.instance.InitializePlayers ();
 		StartCoroutine (DoCountdown ());
@@ -145,7 +154,8 @@ public class GUIManager : MonoBehaviour
 	{
 		// UI Activate/deactivate
 		readyPanel.SetActive (false);
-		
+		hudScorePanel.SetActive (true);
+
 		// Calls
 		GameManager.instance.gameInProgress = true;
 		PlayerManager.instance.StartPlayers ();
@@ -155,7 +165,8 @@ public class GUIManager : MonoBehaviour
 	{
 		// UI Activate/deactivate
 		gameOverPanel.SetActive (true);
-		
+		hudScorePanel.SetActive (false);
+
 		// Calls
 		GameManager.instance.gameInProgress = false;
 		string scoreText = "You got " + PlayerManager.instance.allPaddles[0].score + " points!"; // Scoretext for one player
@@ -219,8 +230,8 @@ public class GUIManager : MonoBehaviour
 	public void MainMenuToLevelEditor()
 	{
 		// UI Activate/deactivate
-		gameOverPanel.SetActive (false);
-		mainPanel.SetActive (true);
+		mainPanel.SetActive (false);
+		levelEditorPanel.SetActive (true);
 		
 		// Calls
 		LevelGenerator.instance.InitializeLevelEditor ();
@@ -229,7 +240,7 @@ public class GUIManager : MonoBehaviour
 	public void LevelEditorToMainMenu()
 	{
 		// UI Activate/deactivate
-		gameOverPanel.SetActive (false);
+		levelEditorPanel.SetActive (false);
 		mainPanel.SetActive (true);
 		
 		// Calls

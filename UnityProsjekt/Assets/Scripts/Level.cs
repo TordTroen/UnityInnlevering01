@@ -9,17 +9,18 @@ public class Level : MonoBehaviour
 
 	private GameObject spawnedLevel;
 	private string levelString;
+	private string levelName;
 
 	public void InitObject(GameObject lvlPrefab)
 	{
 		levelPrefab = lvlPrefab;
-		levelNameText.text = lvlPrefab.GetComponent<LevelInfo>().levelName;
+		SetName (lvlPrefab.GetComponent<LevelInfo>().levelName);
 	}
 
 	public void InitObject(string lvlString, string lvlName)
 	{
 		levelString = lvlString;
-		levelNameText.text = lvlName;
+		SetName (lvlName);
 	}
 
 	void InitializeLevel()
@@ -27,11 +28,18 @@ public class Level : MonoBehaviour
 		if (levelPrefab)
 		{
 			spawnedLevel = Instantiate (levelPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+			spawnedLevel.GetComponent<LevelInfo>().InitializeInfo (levelName, levelPrefab);
 		}
 		else
 		{
-			spawnedLevel = LevelGenerator.instance.GenerateLevel (levelString);
+			spawnedLevel = LevelGenerator.instance.GenerateLevel (levelString, levelName);
 		}
+	}
+
+	void SetName(string newName)
+	{
+		levelName = newName;
+		levelNameText.text = newName;
 	}
 
 	public void PlayLevel()

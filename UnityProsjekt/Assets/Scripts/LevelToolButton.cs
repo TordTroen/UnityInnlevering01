@@ -30,6 +30,7 @@ public class LevelToolButton : MonoBehaviour, IPointerEnterHandler, IPointerDown
 
 	void PaintBrick()
 	{
+		print ("Paint");
 		lvlGen.SetBrick (this);
 	}
 }

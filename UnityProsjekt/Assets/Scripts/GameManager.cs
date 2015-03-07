@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 
 	public void ReloadLevel()
 	{
-
+		currentLevel.GetComponent<LevelInfo>().ReloadLevel ();
 	}
 
 	public void DisplayLevels()

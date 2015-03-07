@@ -456,6 +456,7 @@ MonoBehaviour:
   - {fileID: 179740, guid: e0fd5a1f8cc6a47f187af7d22b2805b2, type: 2}
   - {fileID: 159174, guid: b5e19d874d8354b4996e994baa816593, type: 2}
   - {fileID: 137450, guid: 9a611781083e24181a196f7a9b2a3a0d, type: 2}
+  - {fileID: 139208, guid: e13483eaafeeb4265bf69276522bb16b, type: 2}
   input: {fileID: 0}
   brickWidth: 1
   brickHeight: .25
@@ -497,9 +498,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: {fileID: 0}
   levelSelectPrefab: {fileID: 182292, guid: cd992f8f0f1094a9881d98d56b762056, type: 2}
-  standardLevelPrefabs: []
+  standardLevelPrefabs:
+  - {fileID: 113284, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
+  - {fileID: 113284, guid: 330d6b84cacbb443799a940f4bda1cb0, type: 2}
+  - {fileID: 113284, guid: 8e65dd4f30f6c46df8196ea61ec5c570, type: 2}
   standardLevelsParent: {fileID: 0}
   customLevelsParent: {fileID: 0}
+  instantiatedLevelitems: []
   playingClassic: 0
   audioClipWallHit1: {fileID: 8300000, guid: a5eaebdb9debd4d5687dce6a9391c410, type: 3}
   audioClipWallHit2: {fileID: 8300000, guid: 0c6e6815e49bb4482bfd4e98a302567f, type: 3}
