@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class LevelGenerator : MonoBehaviour
 {
+	// DEBUG
+	public InputField copyField;
+
 	public GameObject genBrickPrefab;
 	public Transform gridParent;
 	public Transform levelViewParent;
@@ -119,8 +122,8 @@ public class LevelGenerator : MonoBehaviour
 	public GameObject GenerateLevel(string lvlString, string name)
 	{
 		int i = 0;
-		float xPos = -(brickWidth + (brickWidth * gridWidth) * 0.5f);
-		float yPos = (brickHeight + (brickHeight * gridHeight)) * 0.5f;
+		float xPos = -(brickWidth + (brickWidth * gridWidth)) * 0.5f + brickWidth;
+		float yPos = (brickHeight + (brickHeight * gridHeight)) * 0.5f - brickHeight;
 		Vector3 pos = new Vector3(xPos, yPos);
 		Transform lvlParent = new GameObject("Level_" + name, typeof(LevelInfo)).transform;
 		lvlParent.GetComponent<LevelInfo>().InitializeInfo (lvlString, name);
@@ -175,44 +178,42 @@ public class LevelGenerator : MonoBehaviour
 
 	public void SaveLevel()
 	{
+		SaveLevelToPrefs (levelString, levelName);
+
+		// Display all levels
+		DisplaySavedLevels ();
+	}
+
+	void SaveLevelToPrefs(string lvlString, string lvlName) // TODO Call this when parsing from textfile
+	{
 		// Make sure the name is valid
 		if (!ValidName ())
 		{
 			// Notify the player and stop the saving
 			// TODO Notify the player
-			print ("INVALID NAME!");
+			Debug.LogError ("INVALID NAME!");
 			return;
 		}
-
+		
 		// Save level with name to playerprefs
-		PlayerPrefs.SetString (levelSaveKey + curLevelSaveId, levelName + "\n" + levelString);
+		PlayerPrefs.SetString (levelSaveKey + curLevelSaveId, lvlName + "\n" + lvlString);
+		// DEBUG
+		copyField.text = GetLevelPref (curLevelSaveId);
+		// END DEBUG
 		// Increment id save WARNING: must only be done from here, or else problems will occur
 		curLevelSaveId ++;
 		// Save the new levelId
 		PlayerPrefs.SetInt (curLevelIdKey, curLevelSaveId);
-
+		
 		// Make sure Unity saves the prefs to file in case a crash before Unity does it automatically
 		PlayerPrefs.Save ();
-
-		// Display all levels
-		DisplaySavedLevels ();
 	}
 
 	string GetLevelPref(int id)
 	{
 		return PlayerPrefs.GetString (levelSaveKey + id);
 	}
-
-	/*string GetLevelName(int id)
-	{
-		return GetLevelPref (id).Split(new string[] { "\r\n", "\n" }, System.StringSplitOptions.None)[0];
-	}
-
-	string GetLevelString(int id)
-	{
-		return GetLevelPref (id).Split(new string[] { "\r\n", "\n" }, System.StringSplitOptions.None)[1];
-	}*/
-
+	
 	/// <summary>
 	/// Returns the level pref (either name or levelstring) of id. 
 	/// </summary>
@@ -286,6 +287,10 @@ public class LevelGenerator : MonoBehaviour
 
 	public void ClearEditor()
 	{
+		// DEBUG
+		copyField.text = "";
+		// END DEBUG
+
 		// Clear levelname and name input
 		levelName = "";
 		levelNameInput.text = "";

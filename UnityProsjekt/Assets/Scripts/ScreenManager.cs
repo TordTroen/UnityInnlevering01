@@ -7,7 +7,7 @@ public class ScreenManager : MonoBehaviour
 	public Transform[] walls; // [0] - bottom, [1] - left, [2] - top, [3] - right
 
 	public int pixelsPerUnit = 100; // Pixels per unity (the same as in each sprite's import settings
-
+	
 	void Awake()
 	{
 		// Set camera size depending on screen height and pixelsperunits (in spritesettings)
@@ -18,7 +18,7 @@ public class ScreenManager : MonoBehaviour
 		ArrangeWalls ();
 	}
 
-	void ArrangeWalls()
+	public void ArrangeWalls()
 	{
 		GameManager.instance.UpdateScreenBounds (); // Make sure screenbounds are updated
 		Vector3 bl = GameManager.instance.bottomLeft; // Bottom left corner in world coordinates

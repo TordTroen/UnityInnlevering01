@@ -21,14 +21,20 @@ public class GUIManager : MonoBehaviour
 	public Text gameOverScoreText;
 	public Text countdownText;
 	public Text[] scoreTexts;
+	public Text[] pauseScoreTexts;
+	public Text[] gameOverScoreTexts;
+	public Text gameOverWinnerText;
 	public Text playerModeText;
 
 	private int playerNumber = 1;
+	private ScreenManager screenManager;
 	public static GUIManager instance;
 
 	void Awake()
 	{
 		instance = this;
+
+		screenManager = GetComponent<ScreenManager>();
 	}
 
 	void Start()
@@ -46,6 +52,33 @@ public class GUIManager : MonoBehaviour
 			divider = "\n";
 		}
 		scoreTexts[playerId].text = string.Format ("<color=#22df71>{0}{1}</color><color=#26a2df>{2}</color>", player.curHealth, divider, player.score.ToString ());
+	}
+
+	public void UpdateScores()
+	{
+		int winner = 0;
+		int highest = -1;
+		int playerCount = (int)GameManager.instance.playerMode;
+
+		for (int i = 0; i < pauseScoreTexts.Length; i ++)
+		{
+			if (i < playerCount)
+			{
+				int score = PlayerManager.instance.allPaddles[i].score;
+				if (score > highest)
+				{
+					highest = score;
+					winner = i;
+				}
+				pauseScoreTexts[i].text = score.ToString ();
+				gameOverScoreTexts[i].text = score.ToString ();
+			}
+			pauseScoreTexts[i].transform.parent.gameObject.SetActive (i < playerCount);
+			gameOverScoreTexts[i].transform.parent.gameObject.SetActive (i < playerCount);
+		}
+		gameOverScoreTexts[winner].transform.parent.gameObject.SetActive (false);
+		gameOverWinnerText.text = highest.ToString ();
+		gameOverWinnerText.transform.parent.GetComponent<Text>().text = "Player " + (winner + 1);
 	}
 
 	void TogglePlayerHudScores()
@@ -89,6 +122,8 @@ public class GUIManager : MonoBehaviour
 		playerModeText.text = playerString;
 
 		TogglePlayerHudScores ();
+
+		screenManager.ArrangeWalls ();
 	}
 
 	public void ToggleSound(bool active){
@@ -168,6 +203,7 @@ public class GUIManager : MonoBehaviour
 		hudScorePanel.SetActive (false);
 
 		// Calls
+		UpdateScores ();
 		GameManager.instance.gameInProgress = false;
 		string scoreText = "You got " + PlayerManager.instance.allPaddles[0].score + " points!"; // Scoretext for one player
 		if (GameManager.instance.playerMode != PlayerMode.Single) // If more than one player
@@ -194,6 +230,7 @@ public class GUIManager : MonoBehaviour
 	{
 		// UI Activate/deactivate
 		gameOverPanel.SetActive (false);
+		hudScorePanel.SetActive (false);
 		mainPanel.SetActive (true);
 		
 		// Calls
@@ -212,7 +249,7 @@ public class GUIManager : MonoBehaviour
 	public void SettingsToMainMenu()
 	{
 		// UI Activate/deactivate
-		gameOverPanel.SetActive (false);
+		settingsPanel.SetActive (false);
 		mainPanel.SetActive (true);
 		
 		// Calls

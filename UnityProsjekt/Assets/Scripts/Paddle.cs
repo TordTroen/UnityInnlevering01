@@ -120,7 +120,7 @@ public class Paddle : MonoBehaviour {
 		}
 		else
 		{
-			DestroyPaddle ();
+			DeactivatePaddle ();
 		}
 	}
 
@@ -182,7 +182,7 @@ public class Paddle : MonoBehaviour {
 		GUIManager.instance.UpdatePlayerStats (playerId); // Update score texts
 	}
 
-	public void DestroyPaddle()
+	public void DeactivatePaddle()
 	{
 		//StartCoroutine (WaitAndDeactivatePaddle ());
 		if (ball)

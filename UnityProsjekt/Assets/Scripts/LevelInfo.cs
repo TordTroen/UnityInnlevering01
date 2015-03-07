@@ -4,8 +4,8 @@ using System.Collections;
 public class LevelInfo : MonoBehaviour
 {
 	public string levelName = "Level";
-	private GameObject levelPrefab;
-	private string levelString;
+	public GameObject levelPrefab;
+	public string levelString;
 
 	public void InitializeInfo(string levelName, GameObject levelPrefab)
 	{
@@ -29,7 +29,8 @@ public class LevelInfo : MonoBehaviour
 		}
 		else
 		{
-			lvlObj = LevelGenerator.instance.GenerateLevel (levelString, levelName);
+			lvlObj = LevelGenerator.instance.GenerateLevel (levelName, levelString);
+			lvlObj.GetComponent<LevelInfo>().InitializeInfo (levelName, levelString);
 		}
 		GameManager.instance.currentLevel = lvlObj;
 		Destroy (gameObject);

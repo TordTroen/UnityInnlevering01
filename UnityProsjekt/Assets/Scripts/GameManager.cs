@@ -37,13 +37,13 @@ public class GameManager : MonoBehaviour
 	
 	void Update()
 	{
-		if (Input.GetButtonDown ("Pause"))
+		if (Input.GetButtonDown ("Pause") && gameInProgress)
 		{
 			if (isPaused)
 			{
 				UnPauseGame ();
 			}
-			else if (!isPaused && gameInProgress)
+			else if (!isPaused)
 			{
 				PauseGame ();
 			}
@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
 			lvlItem.GetComponent<Level>().InitObject (standardLevelPrefabs[i]);
 			instantiatedLevelitems.Add (lvlItem);
 		}
+		// TODO Go through textfile and make a level for each of thos lines
 
 		// Custom levels
 		for (int i = 0; i < LevelGenerator.instance.GetLevelIdFromPrefs (); i ++)
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
 		GUIManager.instance.pausePanel.SetActive (true);
 		gameInProgress = false;
 		Time.timeScale = 0f;
+		GUIManager.instance.UpdateScores ();
 	}
 	
 	public void UnPauseGame()
@@ -117,7 +119,8 @@ public class GameManager : MonoBehaviour
 		gameInProgress = true;
 		Time.timeScale = 1f;
 	}
-	
+
+	// TODO Remove all these
 	public void MainMenuToReadyGame()
 	{
 		// UI Activate/deactivate

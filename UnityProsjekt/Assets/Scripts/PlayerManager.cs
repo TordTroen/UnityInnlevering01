@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
 
 		for (int i = 0; i < allPaddles.Count; i ++)
 		{
-			allPaddles[i].DestroyPaddle ();
+			StartCoroutine (allPaddles[i].TerminatePaddle ());
 		}
 		allPaddles = new List<Paddle>();
 		for (int i = 0; i < (int)GameManager.instance.playerMode; i ++)

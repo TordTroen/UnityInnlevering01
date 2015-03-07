@@ -70,22 +70,9 @@ public class BallMovement : MonoBehaviour {
 	
 	void ChangeDirection(Vector3 normal)
 	{
-		direction.x = oldVector.x - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.x));
-		direction.y = oldVector.y - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.y));
-		//direction = Vector3.Reflect (oldVector, normal);
-		return;
-		if (normal.x <= 1f && normal.x >= -1f) { // Horisontalt
-			//print ("hit horizontal");
-			direction.y *= -1;
-		}
-		else if (normal.y <= 1f && normal.y >= -1f) { // Vertikalt
-			//print ("hit vertical");
-			direction.x *= -1;
-		}
-		else
-		{
-			Debug.Log ("Hit some weird-ass shape");
-		}
+		//direction.x = oldVector.x - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.x));
+		//direction.y = oldVector.y - (2 * ((normal.x * oldVector.x + normal.y * oldVector.y) * normal.y));
+		direction = Vector3.Reflect (oldVector, normal);
 	}
 	
 	void OnCollisionEnter2D(Collision2D col){
