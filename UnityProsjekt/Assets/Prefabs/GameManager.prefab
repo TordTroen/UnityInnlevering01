@@ -500,12 +500,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b148f7717e7dc4ca58854bc5d3cb7f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: {fileID: 0}
   levelSelectPrefab: {fileID: 182292, guid: cd992f8f0f1094a9881d98d56b762056, type: 2}
   standardLevelPrefabs:
   - {fileID: 113284, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 195874, guid: 06702a027765d4c85a2577c60469aa6f, type: 2}
+  - {fileID: 168274, guid: 9a05747caf91d4f5ea1c1eebd45bbf9b, type: 2}
+  - {fileID: 171896, guid: ac44c4b033a1b4c69a34007961154fd7, type: 2}
   standardCustomLevelFile: {fileID: 4900000, guid: c6d772017ba924315b35ca40d36cdd35,
     type: 3}
   standardLevelsParent: {fileID: 0}
@@ -524,6 +524,7 @@ MonoBehaviour:
   indestructableColor: {r: .433823526, g: .433823526, b: .433823526, a: 1}
   gameInProgress: 0
   isPaused: 0
+  currentLevel: {fileID: 0}
   topRight: {x: 0, y: 0, z: 0}
   bottomLeft: {x: 0, y: 0, z: 0}
   centerOfScreen: {x: 0, y: 0, z: 0}

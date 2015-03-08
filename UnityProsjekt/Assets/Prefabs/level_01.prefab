@@ -3067,7 +3067,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413154
 MonoBehaviour:
@@ -3084,7 +3084,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413156
 MonoBehaviour:
@@ -3101,7 +3101,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413158
 MonoBehaviour:
@@ -3118,7 +3118,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413160
 MonoBehaviour:
@@ -3135,7 +3135,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413162
 MonoBehaviour:
@@ -3152,7 +3152,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413164
 MonoBehaviour:
@@ -3169,7 +3169,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413166
 MonoBehaviour:
@@ -3186,7 +3186,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413168
 MonoBehaviour:
@@ -3203,7 +3203,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413170
 MonoBehaviour:
@@ -3220,7 +3220,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413172
 MonoBehaviour:
@@ -3237,7 +3237,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413174
 MonoBehaviour:
@@ -3254,7 +3254,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413176
 MonoBehaviour:
@@ -3271,7 +3271,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413178
 MonoBehaviour:
@@ -3288,7 +3288,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413180
 MonoBehaviour:
@@ -3305,7 +3305,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413182
 MonoBehaviour:
@@ -3322,7 +3322,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413184
 MonoBehaviour:
@@ -3339,7 +3339,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413186
 MonoBehaviour:
@@ -3356,7 +3356,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413188
 MonoBehaviour:
@@ -3373,7 +3373,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413190
 MonoBehaviour:
@@ -3390,7 +3390,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413192
 MonoBehaviour:
@@ -3407,7 +3407,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413194
 MonoBehaviour:
@@ -3424,7 +3424,7 @@ MonoBehaviour:
   maxHealth: 3
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413196
 MonoBehaviour:
@@ -3441,7 +3441,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413198
 MonoBehaviour:
@@ -3458,7 +3458,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413200
 MonoBehaviour:
@@ -3475,7 +3475,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413202
 MonoBehaviour:
@@ -3492,7 +3492,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413204
 MonoBehaviour:
@@ -3509,7 +3509,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413206
 MonoBehaviour:
@@ -3526,7 +3526,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413208
 MonoBehaviour:
@@ -3543,7 +3543,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413210
 MonoBehaviour:
@@ -3560,7 +3560,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413212
 MonoBehaviour:
@@ -3577,7 +3577,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413214
 MonoBehaviour:
@@ -3594,7 +3594,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413216
 MonoBehaviour:
@@ -3611,7 +3611,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413218
 MonoBehaviour:
@@ -3628,7 +3628,7 @@ MonoBehaviour:
   maxHealth: 3
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413220
 MonoBehaviour:
@@ -3645,7 +3645,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413222
 MonoBehaviour:
@@ -3662,7 +3662,7 @@ MonoBehaviour:
   maxHealth: 3
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413224
 MonoBehaviour:
@@ -3679,7 +3679,7 @@ MonoBehaviour:
   maxHealth: 3
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413226
 MonoBehaviour:
@@ -3696,7 +3696,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413228
 MonoBehaviour:
@@ -3713,7 +3713,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413230
 MonoBehaviour:
@@ -3730,7 +3730,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413232
 MonoBehaviour:
@@ -3747,7 +3747,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413234
 MonoBehaviour:
@@ -3764,7 +3764,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413236
 MonoBehaviour:
@@ -3781,7 +3781,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413238
 MonoBehaviour:
@@ -3798,7 +3798,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413240
 MonoBehaviour:
@@ -3815,7 +3815,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413242
 MonoBehaviour:
@@ -3832,7 +3832,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413244
 MonoBehaviour:
@@ -3849,7 +3849,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413246
 MonoBehaviour:
@@ -3866,7 +3866,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413248
 MonoBehaviour:
@@ -3883,7 +3883,7 @@ MonoBehaviour:
   maxHealth: 3
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413250
 MonoBehaviour:
@@ -3900,7 +3900,7 @@ MonoBehaviour:
   maxHealth: 3
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413252
 MonoBehaviour:
@@ -3917,7 +3917,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413254
 MonoBehaviour:
@@ -3934,7 +3934,7 @@ MonoBehaviour:
   maxHealth: 3
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413256
 MonoBehaviour:
@@ -3951,7 +3951,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413258
 MonoBehaviour:
@@ -3968,7 +3968,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413260
 MonoBehaviour:
@@ -3985,7 +3985,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413262
 MonoBehaviour:
@@ -4002,7 +4002,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413264
 MonoBehaviour:
@@ -4019,7 +4019,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413266
 MonoBehaviour:
@@ -4036,7 +4036,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413268
 MonoBehaviour:
@@ -4053,7 +4053,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413270
 MonoBehaviour:
@@ -4070,7 +4070,7 @@ MonoBehaviour:
   maxHealth: 2
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413272
 MonoBehaviour:
@@ -4087,7 +4087,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413274
 MonoBehaviour:
@@ -4104,7 +4104,7 @@ MonoBehaviour:
   maxHealth: 3
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413276
 MonoBehaviour:
@@ -4121,7 +4121,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413278
 MonoBehaviour:
@@ -4138,7 +4138,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413280
 MonoBehaviour:
@@ -4155,7 +4155,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413282
 MonoBehaviour:
@@ -4172,7 +4172,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413284
 MonoBehaviour:
@@ -4189,7 +4189,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413286
 MonoBehaviour:
@@ -4206,7 +4206,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413288
 MonoBehaviour:
@@ -4223,7 +4223,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413290
 MonoBehaviour:
@@ -4240,7 +4240,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413292
 MonoBehaviour:
@@ -4257,7 +4257,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11413294
 MonoBehaviour:
@@ -4274,7 +4274,7 @@ MonoBehaviour:
   maxHealth: 1
   indestructible: 0
   independantColor: 0
-  hitParticle: {fileID: 0}
+  hitParticle: {fileID: 159088, guid: 7426cb67a863f40bf981dba37efa6153, type: 2}
   levelInfoParent: {fileID: 0}
 --- !u!114 &11439680
 MonoBehaviour:

@@ -88,7 +88,7 @@ public class Paddle : MonoBehaviour {
 		transform.eulerAngles = new Vector3(0f, 0f, 90f * rotInvert) * playerId; // Rotate player
 
 		// Invert keys so that for player 3 & 4 the keys are correct (rotating affects which keys
-		if (playerId == 1 || playerId == 2)
+		if (playerId == 2 || playerId == 3)
 		{
 			invert = -1;
 		}

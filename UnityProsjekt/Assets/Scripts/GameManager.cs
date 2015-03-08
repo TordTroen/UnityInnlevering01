@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-	public GameObject currentLevel; // Current active level gameobject
 	public GameObject levelSelectPrefab; // Level item prefab for levelselect
 	public GameObject[] standardLevelPrefabs; // Standard level prefabs (premade, included in game)
 	public TextAsset standardCustomLevelFile; // Standard level text file (premade in the editor, included in game) Used to allow people to make levels on their own during production.
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
 
 	private AudioSource audioSource;
 	private List<GameObject> instantiatedLevelitems = new List<GameObject>(); // Instantiated levelitems
+	[HideInInspector]public GameObject currentLevel; // Current active level gameobject
 	[HideInInspector]public Vector3 topRight; // topRight.x = right edge, topRight.y = top edge
 	[HideInInspector]public Vector3 bottomLeft; // bottomLeft.x = left edge, bottomLeft.y = bottom edge
 	[HideInInspector]public Vector3 centerOfScreen; // Center of screen in world coordinates (in case playingfield isn't centered in the scene)

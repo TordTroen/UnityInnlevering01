@@ -8,10 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428482}
-  - 114: {fileID: 11428482}
   - 114: {fileID: 11407358}
+  - 114: {fileID: 11428482}
   m_Layer: 0
-  m_Name: levelClassic
+  m_Name: level_00[classic]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,9 +41,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: Level
-  levelPrefab: {fileID: 0}
-  levelString: 
-  bricks: []
 --- !u!114 &11428482
 MonoBehaviour:
   m_ObjectHideFlags: 1
