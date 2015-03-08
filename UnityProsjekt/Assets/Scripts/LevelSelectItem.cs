@@ -2,27 +2,39 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Level : MonoBehaviour 
+public class LevelSelectItem : MonoBehaviour // For the levelitems in levelselect
 {
-	public GameObject levelPrefab;
-	public Text levelNameText;
+	public Text levelNameText; // Levelname textitem
 
+	[HideInInspector]public GameObject levelPrefab; // Level prefab (when not a custom level)
 	private GameObject spawnedLevel;
 	private string levelString;
 	private string levelName;
 
+	/// <summary>
+	/// Initializes the object with a prefab.
+	/// </summary>
+	/// <param name="lvlPrefab">Lvl prefab.</param>
 	public void InitObject(GameObject lvlPrefab)
 	{
 		levelPrefab = lvlPrefab;
 		SetName (lvlPrefab.GetComponent<LevelInfo>().levelName);
 	}
 
+	/// <summary>
+	/// /// Initializes the object with a string.
+	/// </summary>
+	/// <param name="lvlString">Lvl string.</param>
+	/// <param name="lvlName">Lvl name.</param>
 	public void InitObject(string lvlString, string lvlName)
 	{
 		levelString = lvlString;
 		SetName (lvlName);
 	}
 
+	/// <summary>
+	/// Initializes the level and ready it for playing.
+	/// </summary>
 	void InitializeLevel()
 	{
 		if (levelPrefab)
@@ -43,6 +55,9 @@ public class Level : MonoBehaviour
 		levelNameText.text = newName;
 	}
 
+	/// <summary>
+	/// Starts the current level
+	/// </summary>
 	public void PlayLevel()
 	{
 		GUIManager.instance.LevelSelectToReady ();

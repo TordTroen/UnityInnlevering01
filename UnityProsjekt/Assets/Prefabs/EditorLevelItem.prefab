@@ -103,7 +103,7 @@ GameObject:
   - 114: {fileID: 11453064}
   - 114: {fileID: 11453066}
   m_Layer: 5
-  m_Name: LevelItem
+  m_Name: EditorLevelItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 153066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87cdf5f62a9874e4b92591d66f5aefee, type: 3}
+  m_Script: {fileID: 11500000, guid: a65380d5973cf4672992f2ccc92d8e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelId: 0

@@ -52,7 +52,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 128482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faf3f5e38b43948bbb0ba972884448ed, type: 3}
+  m_Script: {fileID: 11500000, guid: cb7b0e32b584e40f2a67964cd2b0a6b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   brickLayers:

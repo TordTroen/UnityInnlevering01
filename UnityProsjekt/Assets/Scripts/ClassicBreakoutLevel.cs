@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 // this script is used for the classic breakout level
-public class BrickDynamicSize : MonoBehaviour {
-	public GameObject[] brickLayers;
-	public int bricksInRow = 8;
-	public float tileHeight = 0.25f;
+public class ClassicBreakoutLevel : MonoBehaviour {
+	public GameObject[] brickLayers; // Bricks in the classic level
+	public int bricksInRow = 8; // Number of rows
+	public float tileHeight = 0.25f; // The height of each tile
 	public float offsetFromCenter;
 	public Vector2 colliderMod;
 

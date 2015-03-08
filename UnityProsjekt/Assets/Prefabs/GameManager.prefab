@@ -421,7 +421,6 @@ MonoBehaviour:
   hudScorePanel: {fileID: 0}
   classicLevelButton: {fileID: 0}
   classicLevelText: {fileID: 0}
-  gameOverScoreText: {fileID: 0}
   countdownText: {fileID: 0}
   scoreTexts:
   - {fileID: 0}
@@ -451,18 +450,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c78d4c87119e4014930d358db3ade47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  copyField: {fileID: 0}
   genBrickPrefab: {fileID: 166070, guid: a9f607b2ed46a4a7aac39e3ed27347fd, type: 2}
   gridParent: {fileID: 0}
   levelViewParent: {fileID: 0}
   levelItemPrefab: {fileID: 153066, guid: 0852ca009ea7e4dc3bb0730171d58d5f, type: 2}
-  levelItems: []
-  genBricks: []
-  toolId: 0
-  levelString: 
   gridWidth: 8
   gridHeight: 8
-  levelName: 
   levelNameInput: {fileID: 0}
   bricks:
   - {fileID: 0}
@@ -511,18 +504,16 @@ MonoBehaviour:
   levelSelectPrefab: {fileID: 182292, guid: cd992f8f0f1094a9881d98d56b762056, type: 2}
   standardLevelPrefabs:
   - {fileID: 113284, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
-  - {fileID: 113284, guid: 330d6b84cacbb443799a940f4bda1cb0, type: 2}
-  - {fileID: 113284, guid: 8e65dd4f30f6c46df8196ea61ec5c570, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   standardCustomLevelFile: {fileID: 4900000, guid: c6d772017ba924315b35ca40d36cdd35,
     type: 3}
   standardLevelsParent: {fileID: 0}
   customLevelsParent: {fileID: 0}
-  instantiatedLevelitems: []
   acWallHits:
   - {fileID: 8300000, guid: a5eaebdb9debd4d5687dce6a9391c410, type: 3}
   - {fileID: 8300000, guid: 0c6e6815e49bb4482bfd4e98a302567f, type: 3}
   acBrickHit: {fileID: 8300000, guid: 17d16a137b653459bbcda14c017d85c5, type: 3}
-  playFirstClip: 1
   playerMode: 1
   brickColors:
   - {r: .945098042, g: 1, b: 0, a: 1}

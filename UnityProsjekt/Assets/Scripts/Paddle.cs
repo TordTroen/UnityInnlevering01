@@ -4,31 +4,29 @@ using System.Collections;
 public class Paddle : MonoBehaviour {
 
 	public float paddleSpeed = 1f;
-	public KeyCode leftKey = KeyCode.LeftArrow;
+	public KeyCode leftKey = KeyCode.LeftArrow; // We use KeyCodes instead of Buttons from the Input manager so its easier to set on each player
 	public KeyCode rightKey = KeyCode.RightArrow;
 
-	public int curHealth;
-	public int maxHealth = 3;
-	public int score;
+	public int curHealth; // Player health
+	public int maxHealth = 3; // Player max health
+	public int score; // Current score
 
-	public GameObject ballPrefab;
-	public Sprite[] paddleSprites;
-	public Color paddleColor = Color.blue;
+	public GameObject ballPrefab; // Ballprefab for instantiating a ball
+	public Sprite[] paddleSprites; // Sprites for full and half size (0 - full, 1 - half)
+	public Color paddleColor = Color.blue; // The color of the paddle
 
-	[HideInInspector]public BallMovement ball;
-	[HideInInspector]public int playerId;
-	private float paddleSizeX;
-	private float paddleSizeY;
-	private Vector2 paddleSize;
-	private bool isHalfSize = true;
-	private int invert = 1;
+	[HideInInspector]public BallMovement ball; // The paddles ball
+	[HideInInspector]public int playerId; // Playerid
+	private Vector2 paddleSize; // The size of the paddle
+	private bool isHalfSize = true; // Whether the paddle is halfsize or not
+	private int invert = 1; // -1 = invert the keys
 	private SpriteRenderer spriteRenderer;
 	private BoxCollider2D paddleCollider;
-	private float wallInset;
+	private float wallInset; // Inset of the walls
 
 	void Awake(){
 		// Get wallinset from screenmanager
-		wallInset = GameManager.instance.GetComponent<ScreenManager>().wallInset * 0.5f; // (must be on same object as GameManager)
+		wallInset = GameManager.instance.GetComponent<ScreenManager>().wallInset * 0.5f; // (screenmanager must be on same object as GameManager)
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		paddleCollider = GetComponent<BoxCollider2D>();
 		UpdatePaddleSize ();
@@ -36,6 +34,7 @@ public class Paddle : MonoBehaviour {
 		// Instantiate the ball and get it's BallMovement script
 		ball = (Instantiate (ballPrefab, transform.position, Quaternion.identity) as GameObject).GetComponent<BallMovement>();
 		ball.ownerPaddle = this;
+		ball.UpdateColor ();
 	}
 
 	// Update is called once per frame
@@ -112,13 +111,11 @@ public class Paddle : MonoBehaviour {
 	{
 		curHealth --;
 		PlayerManager.instance.OnPlayerLoseHealth (playerId, !IsAlive ());
-		if (IsAlive ())
+		if (IsAlive ()) // If still alive
 		{
-			//ResetBall ();
-			//ball.PlayBall ();
 			SetPaddleSize (true);
 		}
-		else
+		else // If dead
 		{
 			DeactivatePaddle ();
 		}
@@ -138,7 +135,7 @@ public class Paddle : MonoBehaviour {
 	/// </summary>
 	public void ResetBall()
 	{
-		ball.SetOwnerPaddle (this);
+		ball.UpdateColor ();
 		ball.hasStarted = false;
 		ball.transform.SetParent (transform);
 		ball.transform.position = transform.position + transform.up * 1f;
@@ -204,21 +201,4 @@ public class Paddle : MonoBehaviour {
 		}
 		Destroy (gameObject);
 	}
-
-	/*IEnumerator WaitAndDeactivatePaddle()
-	{
-		yield return new WaitForEndOfFrame(); // Wait to end of frame so other calls to this class does their thing first
-
-		// Remove from playermanager and destroy ball + paddle
-		//PlayerManager.instance.allPaddles.Remove (this);
-		// TODO Don't remove here, have a function that wipes it only before initializing, only deactivate here (so scores can be accessed)
-		if (ball)
-		{
-			//Destroy (ball.gameObject);
-			ball.gameObject.SetActive (false);
-		}
-		gameObject.SetActive (false);
-		//Destroy (gameObject);
-
-	}*/
 }

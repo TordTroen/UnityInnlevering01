@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 public class GUIManager : MonoBehaviour
 {
-	public int pregameCountdown = 3;
+	public int pregameCountdown = 3; // Number of seconds for the pregame countdown
 
+	// All UI panels
 	public GameObject mainPanel;
 	public GameObject levelSelectPanel;
 	public GameObject levelEditorPanel;
@@ -18,12 +19,13 @@ public class GUIManager : MonoBehaviour
 	public Button classicLevelButton;
 	public Text classicLevelText;
 
-	public Text gameOverScoreText;
+	// All score texts
 	public Text countdownText;
 	public Text[] scoreTexts;
 	public Text[] pauseScoreTexts;
 	public Text[] gameOverScoreTexts;
 	public Text gameOverWinnerText;
+
 	public Text playerModeText;
 
 	private int playerNumber = 1;
@@ -47,7 +49,7 @@ public class GUIManager : MonoBehaviour
 	{
 		Paddle player = PlayerManager.instance.allPaddles[playerId];
 		string divider = " - ";
-		if (playerId == 1 || playerId == 3)
+		if (playerId == 1 || playerId == 3) // Divide with a linebreak if on the sides
 		{
 			divider = "\n";
 		}
@@ -65,17 +67,21 @@ public class GUIManager : MonoBehaviour
 			if (i < playerCount)
 			{
 				int score = PlayerManager.instance.allPaddles[i].score;
+				// Find highest score
 				if (score > highest)
 				{
 					highest = score;
 					winner = i;
 				}
+				// Set scores
 				pauseScoreTexts[i].text = score.ToString ();
 				gameOverScoreTexts[i].text = score.ToString ();
 			}
+			// Toggle score objects depening on playercount
 			pauseScoreTexts[i].transform.parent.gameObject.SetActive (i < playerCount);
 			gameOverScoreTexts[i].transform.parent.gameObject.SetActive (i < playerCount);
 		}
+		// Toggle and assign the winner
 		gameOverScoreTexts[winner].transform.parent.gameObject.SetActive (false);
 		gameOverWinnerText.text = highest.ToString ();
 		gameOverWinnerText.transform.parent.GetComponent<Text>().text = "Player " + (winner + 1);
@@ -83,6 +89,7 @@ public class GUIManager : MonoBehaviour
 
 	void TogglePlayerHudScores()
 	{
+		// Toggle the HUD scores depening on the playercount
 		for (int i = 0; i < scoreTexts.Length; i ++)
 		{
 			scoreTexts[i].gameObject.SetActive (i < (int)GameManager.instance.playerMode);
@@ -112,6 +119,26 @@ public class GUIManager : MonoBehaviour
 		ReadyGameToPlaying ();
 	}
 
+	/// <summary>
+	/// Wipes the playing field.
+	/// </summary>
+	void WipePlayingField()
+	{
+		GameManager.instance.DestroyCurrentLevel ();
+		foreach(Paddle paddle in PlayerManager.instance.allPaddles)
+		{
+			StartCoroutine (paddle.TerminatePaddle ());
+		}
+	}
+
+	/////////////////////////////////
+	// Begin all the GUI functions //
+	/////////////////////////////////
+
+	/// <summary>
+	/// Changes the player mode.
+	/// </summary>
+	/// <param name="next">If set to <c>true</c> next playermode.</param>
 	public void ChangePlayerMode(bool next) {
 		playerNumber = playerNumber.IncrementDecrement (1, 5, next, true);
 		GameManager.instance.playerMode = (PlayerMode)playerNumber;
@@ -120,27 +147,22 @@ public class GUIManager : MonoBehaviour
 			playerString = playerNumber + " PLAYERS";
 		}
 		playerModeText.text = playerString;
-
+		
 		TogglePlayerHudScores ();
-
+		
 		screenManager.ArrangeWalls ();
 	}
-
+	
+	/// <summary>
+	/// Toggles the sound.
+	/// </summary>
+	/// <param name="active">If set to <c>true</c> active.</param>
 	public void ToggleSound(bool active){
 		float volume = 1f;
 		if (active == false){
 			volume = 0;
 		}
 		AudioListener.volume = volume;
-	}
-
-	void WipePlayingField()
-	{
-		GameManager.instance.WipeCurrentLevel ();
-		foreach(Paddle paddle in PlayerManager.instance.allPaddles)
-		{
-			StartCoroutine (paddle.TerminatePaddle ());
-		}
 	}
 
 	public void MainMenuToReadyGame()
@@ -205,16 +227,6 @@ public class GUIManager : MonoBehaviour
 		// Calls
 		UpdateScores ();
 		GameManager.instance.gameInProgress = false;
-		string scoreText = "You got " + PlayerManager.instance.allPaddles[0].score + " points!"; // Scoretext for one player
-		if (GameManager.instance.playerMode != PlayerMode.Single) // If more than one player
-		{
-			scoreText = "";
-			for (int i = 0; i < PlayerManager.instance.allPaddles.Count; i ++)
-			{
-				scoreText += string.Format ("Player {0}: {1} points\n", i + 1, PlayerManager.instance.allPaddles[i].score);
-			}
-		}
-		gameOverScoreText.text = scoreText;
 
 		foreach(Paddle player in PlayerManager.instance.allPaddles)
 		{

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class LevelItem : MonoBehaviour
+public class EditorLevelItem : MonoBehaviour // Level item for custom level display in the level editor
 {
 	public int levelId;
 	public Text levelNameText;

@@ -5,23 +5,32 @@ using System;
 
 public static class Utils
 {
-	public static int IncrementDecrement(this int i, int min, int max, bool increment, bool wrapAround)
+	/// <summary>
+	/// Increments or decrements a number.
+	/// </summary>
+	/// <returns>The new number.</returns>
+	/// <param name="i">The index.</param>
+	/// <param name="min">Minimum value.</param>
+	/// <param name="max">Maximum value.</param>
+	/// <param name="increment">If set to <c>true</c> increment.</param>
+	/// <param name="wrapAround">If set to <c>true</c> wrap around to min after hitting max.</param>
+	public static int IncrementDecrement(this int num, int min, int max, bool increment, bool wrapAround)
 	{
 		if (increment)
 		{
 			if (wrapAround)
 			{
-				i ++;
-				if (i >= max)
+				num ++;
+				if (num >= max)
 				{
-					i = min;
+					num = min;
 				}
 			}
 			else
 			{
-				if (i < max - 1)
+				if (num < max - 1)
 				{
-					i ++;
+					num ++;
 				}
 			}
 		}
@@ -29,21 +38,30 @@ public static class Utils
 		{
 			if (wrapAround)
 			{
-				i --;
-				if (i < min)
+				num --;
+				if (num < min)
 				{
-					i = max - 1;
+					num = max - 1;
 				}
 			}
 			else
 			{
-				if (i > min)
+				if (num > min)
 				{
-					i --;
+					num --;
 				}
 			}
 		}
 		
-		return i;
+		return num;
+	}
+
+	/// <summary>
+	/// Check if a number is even.
+	/// </summary>
+	/// <returns><c>true</c>, if number is even, <c>false</c> otherwise.</returns>
+	public static bool EvenNumber(this int i)
+	{
+		return i % 2 == 0;
 	}
 }

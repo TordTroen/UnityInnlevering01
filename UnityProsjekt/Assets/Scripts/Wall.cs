@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Wall : MonoBehaviour
 {
-	public int wallId;
+	public int wallId; // 0 - bottomwall, 1 - leftwall, 2 - topwall, 3 - rightwall
 
 	void OnCollisionEnter2D(Collision2D other)
 	{

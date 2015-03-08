@@ -79,12 +79,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 182292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9086a4ad9fdd44432b0023080f872a1b, type: 3}
+  m_Script: {fileID: 11500000, guid: b604e6ca8234f434e93d8809b67c7927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelPrefab: {fileID: 0}
-  levelString: 
   levelNameText: {fileID: 11482294}
+  levelPrefab: {fileID: 0}
 --- !u!114 &11482288
 MonoBehaviour:
   m_ObjectHideFlags: 1

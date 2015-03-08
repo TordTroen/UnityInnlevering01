@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
 	
 	public void InitializePlayers()
 	{
+		// Calculate all spawnpositions
 		Vector3[] spawnPositions = new Vector3[4];
 		Vector3 tr = GameManager.instance.topRight;
 		Vector3 bl = GameManager.instance.bottomLeft;
@@ -28,11 +29,14 @@ public class PlayerManager : MonoBehaviour
 		spawnPositions[2] = new Vector3(co.x, tr.y - margin);
 		spawnPositions[3] = new Vector3(tr.x - margin, co.y);
 
+		// Remove old players
 		for (int i = 0; i < allPaddles.Count; i ++)
 		{
 			StartCoroutine (allPaddles[i].TerminatePaddle ());
 		}
 		allPaddles = new List<Paddle>();
+
+		// Instantiate and initialize new paddles
 		for (int i = 0; i < (int)GameManager.instance.playerMode; i ++)
 		{
 			// Instantiate paddle and get the paddlescript
@@ -59,12 +63,15 @@ public class PlayerManager : MonoBehaviour
 				alivePlayers ++;
 			}
 		}
+
+		// End game if no players are left
 		if (alivePlayers <= 0)
 		{
 			GUIManager.instance.PlayingToGameOver ();
 		}
 	}
 
+	// Start the player
 	public void StartPlayers()
 	{
 		for (int i = 0; i < allPaddles.Count; i ++)

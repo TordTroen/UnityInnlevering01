@@ -3,11 +3,11 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class LevelToolButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
+public class LevelToolButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler // For the leveleditors editing buttons
 {
-	public int id;
-	private LevelGenerator lvlGen;
 	public Image img;
+	[HideInInspector]public int id;
+	private LevelGenerator lvlGen;
 
 	void Awake()
 	{
@@ -20,6 +20,7 @@ public class LevelToolButton : MonoBehaviour, IPointerEnterHandler, IPointerDown
 		PaintBrick ();
 	}
 
+	// Allows holding to paint the bricks
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		if (Input.GetMouseButton (0))
@@ -30,7 +31,7 @@ public class LevelToolButton : MonoBehaviour, IPointerEnterHandler, IPointerDown
 
 	void PaintBrick()
 	{
-		print ("Paint");
+		// Sets the button to correct brick
 		lvlGen.SetBrick (this);
 	}
 }

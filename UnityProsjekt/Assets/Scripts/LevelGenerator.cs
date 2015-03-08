@@ -1,31 +1,31 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class LevelGenerator : MonoBehaviour
 {
-	public GameObject genBrickPrefab;
-	public Transform gridParent;
-	public Transform levelViewParent;
-	public GameObject levelItemPrefab;
-	public List<GameObject> levelItems = new List<GameObject>(); // TODO Private
-	public List<Transform> genBricks = new List<Transform>(); // TODO Private
-	public int toolId; // TODO Private
-	public string levelString; // TODO Private
-	public int gridWidth = 8;
-	public int gridHeight = 10;
-	public string levelName; // TODO Private
-	public InputField levelNameInput;
+	public GameObject genBrickPrefab; // Level editor brick prefab
+	public Transform gridParent; // Parent of the editor bricks
+	public Transform levelViewParent; // Parent of the level display
+	public GameObject levelItemPrefab; // Editor level item prefab
+	public int gridWidth = 8; // Width of editorgrid
+	public int gridHeight = 10; // Height of editorgrid
+	public InputField levelNameInput; // Level anme inputfield
 
-	public GameObject[] bricks;
+	public GameObject[] bricks; // Brick to be used for editor
 
-	public float brickWidth = 1f;
-	public float brickHeight = 0.25f;
+	public float brickWidth = 1f; // Width of a brick
+	public float brickHeight = 0.25f; // Height of a brick
 
-	private string levelSaveKey = "customlevel_";
-	private string curLevelIdKey = "levelId_";
-	private int curLevelSaveId = 0;
+	private List<GameObject> levelItems = new List<GameObject>();
+	private List<Transform> genBricks = new List<Transform>();
+	private int toolId; // Current tool
+	private string levelString;
+	private string levelName;
+	private string levelSaveKey = "customlevel_"; // Key for saving level to playerprefs
+	private string curLevelIdKey = "levelId_"; // Key for saving levelid to playerprefs
+	private int curLevelSaveId = 0; // Level id for saving (so its easy to loop through)
 
 	public static LevelGenerator instance;
 
@@ -37,6 +37,7 @@ public class LevelGenerator : MonoBehaviour
 
 	public void InitializeLevelEditor()
 	{
+		// Instantiate the editor items (only if the gird isn't already instantiated)
 		if (genBricks.Count < gridWidth * gridHeight)
 		{
 			foreach(Transform t in genBricks)
@@ -53,19 +54,19 @@ public class LevelGenerator : MonoBehaviour
 			}
 		}
 
-		UpdateEditorGrid ();
-
-		ResetLevelString ();
-		
 		// Display all saved levels
 		DisplaySavedLevels ();
 		
-		// Select the first tool
+		// Reset the editor
+		UpdateEditorGrid ();
 		SelectTool (0);
-
+		ResetLevelString ();
 		ClearEditor ();
 	}
 
+	/// <summary>
+	/// Updates the size of the grid to fit the screen)
+	/// </summary>
 	void UpdateEditorGrid()
 	{
 		float space = 3f;
@@ -119,11 +120,12 @@ public class LevelGenerator : MonoBehaviour
 		image.color = brickColor;
 	}
 
-	public void GenerateLevel()
-	{
-		GenerateLevel (levelString, levelName); // TODO Remove
-	}
-
+	/// <summary>
+	/// Generates a level.
+	/// </summary>
+	/// <returns>The level.</returns>
+	/// <param name="lvlString">Lvl string.</param>
+	/// <param name="name">Name.</param>
 	public GameObject GenerateLevel(string lvlString, string name)
 	{
 		int i = 0;
@@ -189,7 +191,7 @@ public class LevelGenerator : MonoBehaviour
 		DisplaySavedLevels ();
 	}
 
-	void SaveLevelToPrefs(string lvlString, string lvlName) // TODO Call this when parsing from textfile
+	void SaveLevelToPrefs(string lvlString, string lvlName)
 	{
 		// Make sure the name is valid
 		if (!ValidName ())
@@ -251,7 +253,7 @@ public class LevelGenerator : MonoBehaviour
 			{
 				GameObject obj = Instantiate (levelItemPrefab) as GameObject;
 				obj.transform.SetParent (levelViewParent);
-				obj.GetComponent<LevelItem>().Initialize (i, lvl, this);
+				obj.GetComponent<EditorLevelItem>().Initialize (i, lvl, this);
 				levelItems.Add (obj);
 			}
 		}
