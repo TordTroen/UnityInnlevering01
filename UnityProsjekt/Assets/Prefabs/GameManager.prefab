@@ -78,8 +78,8 @@ GameObject:
   - 114: {fileID: 11489550}
   - 114: {fileID: 11489548}
   - 114: {fileID: 11433304}
-  - 82: {fileID: 8253782}
   - 114: {fileID: 11479896}
+  - 82: {fileID: 8253782}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -418,6 +418,7 @@ MonoBehaviour:
   readyPanel: {fileID: 0}
   pausePanel: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  hudScorePanel: {fileID: 0}
   classicLevelButton: {fileID: 0}
   classicLevelText: {fileID: 0}
   gameOverScoreText: {fileID: 0}
@@ -427,6 +428,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  pauseScoreTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gameOverScoreTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gameOverWinnerText: {fileID: 0}
   playerModeText: {fileID: 0}
 --- !u!114 &11479896
 MonoBehaviour:
@@ -439,6 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c78d4c87119e4014930d358db3ade47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  copyField: {fileID: 0}
   genBrickPrefab: {fileID: 166070, guid: a9f607b2ed46a4a7aac39e3ed27347fd, type: 2}
   gridParent: {fileID: 0}
   levelViewParent: {fileID: 0}
@@ -448,7 +461,7 @@ MonoBehaviour:
   toolId: 0
   levelString: 
   gridWidth: 8
-  gridHeight: 10
+  gridHeight: 8
   levelName: 
   levelNameInput: {fileID: 0}
   bricks:
@@ -457,10 +470,8 @@ MonoBehaviour:
   - {fileID: 159174, guid: b5e19d874d8354b4996e994baa816593, type: 2}
   - {fileID: 137450, guid: 9a611781083e24181a196f7a9b2a3a0d, type: 2}
   - {fileID: 139208, guid: e13483eaafeeb4265bf69276522bb16b, type: 2}
-  input: {fileID: 0}
   brickWidth: 1
   brickHeight: .25
-  prevText: 
 --- !u!114 &11489542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -502,13 +513,15 @@ MonoBehaviour:
   - {fileID: 113284, guid: 00fee7f72d3ae4ad8b3186230bde5c04, type: 2}
   - {fileID: 113284, guid: 330d6b84cacbb443799a940f4bda1cb0, type: 2}
   - {fileID: 113284, guid: 8e65dd4f30f6c46df8196ea61ec5c570, type: 2}
+  standardCustomLevelFile: {fileID: 4900000, guid: c6d772017ba924315b35ca40d36cdd35,
+    type: 3}
   standardLevelsParent: {fileID: 0}
   customLevelsParent: {fileID: 0}
   instantiatedLevelitems: []
-  playingClassic: 0
-  audioClipWallHit1: {fileID: 8300000, guid: a5eaebdb9debd4d5687dce6a9391c410, type: 3}
-  audioClipWallHit2: {fileID: 8300000, guid: 0c6e6815e49bb4482bfd4e98a302567f, type: 3}
-  audioClipBrickHit: {fileID: 8300000, guid: 17d16a137b653459bbcda14c017d85c5, type: 3}
+  acWallHits:
+  - {fileID: 8300000, guid: a5eaebdb9debd4d5687dce6a9391c410, type: 3}
+  - {fileID: 8300000, guid: 0c6e6815e49bb4482bfd4e98a302567f, type: 3}
+  acBrickHit: {fileID: 8300000, guid: 17d16a137b653459bbcda14c017d85c5, type: 3}
   playFirstClip: 1
   playerMode: 1
   brickColors:

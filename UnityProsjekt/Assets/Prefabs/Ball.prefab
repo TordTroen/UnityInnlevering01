@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 450
   angleStrength: 40
-  speedFactor: 1.20000005
+  speedFactor: 1
   hasStarted: 0
   ownerPaddle: {fileID: 0}
   currentHits: 0

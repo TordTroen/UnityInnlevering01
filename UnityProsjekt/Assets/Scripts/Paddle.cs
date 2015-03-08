@@ -158,7 +158,7 @@ public class Paddle : MonoBehaviour {
 		else if (!fullSize && !isHalfSize) // Set to halfsize
 		{
 			spriteRenderer.sprite = paddleSprites[1]; // Set sprite
-			paddleCollider.size = new Vector2(1f, 0.25f); // Set collider size
+			paddleCollider.size = new Vector2(1.25f, 0.25f); // Set collider size
 		}
 		// Update paddlesize
 		UpdatePaddleSize ();

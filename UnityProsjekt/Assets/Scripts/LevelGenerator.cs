@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class LevelGenerator : MonoBehaviour
 {
-	// DEBUG
-	public InputField copyField;
-
 	public GameObject genBrickPrefab;
 	public Transform gridParent;
 	public Transform levelViewParent;
@@ -40,27 +37,23 @@ public class LevelGenerator : MonoBehaviour
 
 	public void InitializeLevelEditor()
 	{
-		// TODO Call this when going to the levelgen menu, not in start
-		//genBricks = new List<Transform>(gridParent.GetComponentsInChildren<Transform>());
-		//genBricks.RemoveAt (0);
-		foreach(Transform t in genBricks)
+		if (genBricks.Count < gridWidth * gridHeight)
 		{
-			Destroy (t);
+			foreach(Transform t in genBricks)
+			{
+				Destroy (t.gameObject);
+			}
+			genBricks = new List<Transform>();
+			for (int i = 0; i < gridWidth * gridHeight; i ++)
+			{
+				GameObject obj = Instantiate (genBrickPrefab) as GameObject;
+				obj.transform.SetParent (gridParent);
+				genBricks.Add (obj.transform);
+				obj.GetComponent<LevelToolButton>().id = i;
+			}
 		}
-		genBricks = new List<Transform>();
-		for (int i = 0; i < gridWidth * gridHeight; i ++)
-		{
-			GameObject obj = Instantiate (genBrickPrefab) as GameObject;
-			obj.transform.SetParent (gridParent);
-			genBricks.Add (obj.transform);
-			obj.GetComponent<LevelToolButton>().id = i;
-		}
-		float space = 3f;
-		float width = ((RectTransform)gridParent).rect.width / gridWidth - space;
-		GridLayoutGroup glg = gridParent.GetComponent<GridLayoutGroup>();
-		glg.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-		glg.constraintCount = gridWidth;
-		glg.cellSize = new Vector2(width, width * 0.25f);  //.GetComponent<RectTransform>()
+
+		UpdateEditorGrid ();
 
 		ResetLevelString ();
 		
@@ -69,6 +62,18 @@ public class LevelGenerator : MonoBehaviour
 		
 		// Select the first tool
 		SelectTool (0);
+
+		ClearEditor ();
+	}
+
+	void UpdateEditorGrid()
+	{
+		float space = 3f;
+		float width = ((RectTransform)gridParent).rect.width / gridWidth - space;
+		GridLayoutGroup glg = gridParent.GetComponent<GridLayoutGroup>();
+		glg.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+		glg.constraintCount = gridWidth;
+		glg.cellSize = new Vector2(width, width * 0.25f);  //.GetComponent<RectTransform>()
 	}
 
 	/// <summary>
@@ -126,7 +131,7 @@ public class LevelGenerator : MonoBehaviour
 		float yPos = (brickHeight + (brickHeight * gridHeight)) * 0.5f - brickHeight;
 		Vector3 pos = new Vector3(xPos, yPos);
 		Transform lvlParent = new GameObject("Level_" + name, typeof(LevelInfo)).transform;
-		lvlParent.GetComponent<LevelInfo>().InitializeInfo (lvlString, name);
+		lvlParent.GetComponent<LevelInfo>().InitializeInfo (name, lvlString);
 
 		// Iterate through the rows
 		for (int y = 0; y < gridHeight; y ++)
@@ -197,9 +202,6 @@ public class LevelGenerator : MonoBehaviour
 		
 		// Save level with name to playerprefs
 		PlayerPrefs.SetString (levelSaveKey + curLevelSaveId, lvlName + "\n" + lvlString);
-		// DEBUG
-		copyField.text = GetLevelPref (curLevelSaveId);
-		// END DEBUG
 		// Increment id save WARNING: must only be done from here, or else problems will occur
 		curLevelSaveId ++;
 		// Save the new levelId
@@ -227,7 +229,11 @@ public class LevelGenerator : MonoBehaviour
 		{
 			lineNumber = 1;
 		}
-		return GetLevelPref (id).Split(new string[] { "\r\n", "\n" }, System.StringSplitOptions.None)[lineNumber];
+		if (!PlayerPrefs.HasKey (levelSaveKey + id))
+		{
+			return "";
+		}
+		return GetLevelPref (id).Split(new string[] {"\r\n", "\n"}, System.StringSplitOptions.None)[lineNumber];
 	}
 
 	void DisplaySavedLevels()
@@ -240,11 +246,12 @@ public class LevelGenerator : MonoBehaviour
 
 		for (int i = 0; i < curLevelSaveId; i ++)
 		{
-			if (GetLevel (i, true).Length > 0)
+			string lvl = GetLevel (i, true);
+			if (lvl.Length > 0)
 			{
 				GameObject obj = Instantiate (levelItemPrefab) as GameObject;
 				obj.transform.SetParent (levelViewParent);
-				obj.GetComponent<LevelItem>().Initialize (i, GetLevel (i, true), this);
+				obj.GetComponent<LevelItem>().Initialize (i, lvl, this);
 				levelItems.Add (obj);
 			}
 		}
@@ -287,10 +294,6 @@ public class LevelGenerator : MonoBehaviour
 
 	public void ClearEditor()
 	{
-		// DEBUG
-		copyField.text = "";
-		// END DEBUG
-
 		// Clear levelname and name input
 		levelName = "";
 		levelNameInput.text = "";
@@ -337,11 +340,4 @@ public class LevelGenerator : MonoBehaviour
 
 		DisplaySavedLevels ();
 	}
-
-	/*
-	 * 1. Turn GO grid into string
-	 * 2. Save string
-	 * 3. Load string
-	 * 4. Convert string to grid
-	 */
 }

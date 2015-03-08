@@ -10,6 +10,7 @@ public class Brick : MonoBehaviour
 	public bool indestructible = false;
 	public bool independantColor = false;
 	public GameObject particles;
+	[HideInInspector]public LevelInfo levelInfoParent;
 	private float shrinkSpeed = 10f;
 	private bool shrinking = false;
 	private BoxCollider2D boxCollider;
@@ -41,15 +42,78 @@ public class Brick : MonoBehaviour
 			transform.localScale = scale; // Apply new scale
 		}
 	}
-	
+	public void OnHit(BallMovement ball)
+	{
+		print ("Hit");
+		if (indestructible)
+		{
+			GameManager.instance.PlayAudioClip (
+				GameManager.instance.acWallHits[Random.Range (0, GameManager.instance.acWallHits.Length)]);
+			return;
+		}
+		
+		GameManager.instance.PlayAudioClip (GameManager.instance.acBrickHit);
+		
+		// Get reference to ball that hit this brick
+		BallMovement hitBall = ball;//other.collider.GetComponent<BallMovement>();
+		
+		// Don't hit if ball has hit more than one thing at the same time
+		if (hitBall.currentHits > 1)
+		{
+			return;
+		}
+		
+		// If orange or red brick, increase ballspeed
+		if (maxHealth == 2 || maxHealth == 3 || gameObject.name.Contains ("red") || gameObject.name.Contains ("orange"))
+		{
+			hitBall.IncreaseSpeed ();
+		}
+		
+		// Decrease health
+		curHealth --;
+		
+		// Check if brick has more health
+		if (curHealth <= 0)
+		{
+			// Increase score
+			hitBall.ownerPaddle.IncreaseScore (scoreReward);
+			
+			// Disable collider
+			boxCollider.enabled = false;
+			// Start shrinking
+			shrinking = true;
+			// Clamp health so it doesn't go below 0 (so it is within the range of the colors array)
+			curHealth = 0;
+			
+			// Instantiate brick particlesystem
+			// TODO Implement pooling for particles
+			particles.GetComponent<ParticleSystem>().startColor = spriteRenderer.color;
+			Instantiate(particles, transform.position, Quaternion.identity);
+			
+			levelInfoParent.OnBrickDestroyed (gameObject);
+		}
+		
+		// Update color
+		SetColor ();
+	}
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		if (other.gameObject.tag == "Ball" && !indestructible)
+		return;
+		if (other.gameObject.tag == "Ball")
 		{
+			if (indestructible)
+			{
+				GameManager.instance.PlayAudioClip (
+					GameManager.instance.acWallHits[Random.Range (0, GameManager.instance.acWallHits.Length)]);
+				return;
+			}
+
+			GameManager.instance.PlayAudioClip (GameManager.instance.acBrickHit);
+
 			// Get reference to ball that hit this brick
 			BallMovement hitBall = other.collider.GetComponent<BallMovement>();
 			
-			// Don't remove if ball has hit more than one thing at the same time
+			// Don't hit if ball has hit more than one thing at the same time
 			if (hitBall.currentHits > 1)
 			{
 				return;
@@ -81,6 +145,8 @@ public class Brick : MonoBehaviour
 				// TODO Implement pooling for particles
 				particles.GetComponent<ParticleSystem>().startColor = spriteRenderer.color;
 				Instantiate(particles, transform.position, Quaternion.identity);
+
+				levelInfoParent.OnBrickDestroyed (gameObject);
 			}
 			
 			// Update color

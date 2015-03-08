@@ -215,6 +215,11 @@ public class GUIManager : MonoBehaviour
 			}
 		}
 		gameOverScoreText.text = scoreText;
+
+		foreach(Paddle player in PlayerManager.instance.allPaddles)
+		{
+			player.ball.gameObject.SetActive (false);
+		}
 	}
 	
 	public void GameOverToReadyGame()
@@ -225,7 +230,16 @@ public class GUIManager : MonoBehaviour
 		// Calls
 		MainMenuToReadyGame ();
 	}
-	
+
+	public void GameOverToLevelSelect()
+	{
+		// UI Activate/deactivate
+		
+		// Calls
+		GameOverToMainMenu ();
+		MainMenuToLevelSelect ();
+	}
+
 	public void GameOverToMainMenu()
 	{
 		// UI Activate/deactivate

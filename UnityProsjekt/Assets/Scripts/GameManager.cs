@@ -7,14 +7,13 @@ public class GameManager : MonoBehaviour
 	public GameObject currentLevel;
 	public GameObject levelSelectPrefab;
 	public GameObject[] standardLevelPrefabs;
+	public TextAsset standardCustomLevelFile;
 	public Transform standardLevelsParent;
 	public Transform customLevelsParent;
 	public List<GameObject> instantiatedLevelitems = new List<GameObject>();
 
-	public bool playingClassic;
-	public AudioClip audioClipWallHit1;
-	public AudioClip audioClipWallHit2;
-	public AudioClip audioClipBrickHit;
+	public AudioClip[] acWallHits;
+	public AudioClip acBrickHit;
 	public bool playFirstClip = true;
 	
 	public PlayerMode playerMode = PlayerMode.Single; // Playermode (amount of players)
@@ -24,6 +23,7 @@ public class GameManager : MonoBehaviour
 	public bool gameInProgress = false;
 	public bool isPaused = false;
 
+	private AudioSource audioSource;
 	[HideInInspector]public Vector3 topRight; // topRight.x = right edge, topRight.y = top edge
 	[HideInInspector]public Vector3 bottomLeft; // bottomLeft.x = left edge, bottomLeft.y = bottom edge
 	[HideInInspector]public Vector3 centerOfScreen; // Center of screen in world coordinates (in case playingfield isn't centered in the scene)
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 	{
 		instance = this;
 		UpdateScreenBounds ();
+		audioSource = GetComponent<AudioSource>();
 	}
 	
 	void Update()
@@ -50,11 +51,6 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void PlayClassicLevel()
-	{
-		playingClassic = true;
-	}
-
 	public void SetCurrentLevel(GameObject curLevel)
 	{
 		currentLevel = curLevel;
@@ -65,7 +61,6 @@ public class GameManager : MonoBehaviour
 		// TODO Call when finished Going from a level
 		Destroy (currentLevel);
 		currentLevel = null;
-		playingClassic = false;
 	}
 
 	public void ReloadLevel()
@@ -89,6 +84,31 @@ public class GameManager : MonoBehaviour
 			lvlItem.GetComponent<Level>().InitObject (standardLevelPrefabs[i]);
 			instantiatedLevelitems.Add (lvlItem);
 		}
+		List<string> customPremadeLevels = new List<string>(
+			standardCustomLevelFile.text.Split(new string[] {"\r\n", "\n"}, System.StringSplitOptions.None));
+		customPremadeLevels.RemoveRange (0, 3);
+		int levelCount = 0;
+		List<string> levelNames = new List<string>();
+		List<string> levelStrings = new List<string>();
+		for (int i = 0; i < customPremadeLevels.Count; i ++)
+		{
+			if (i % 2 == 0)
+			{
+				levelNames.Add (customPremadeLevels[i]);
+			}
+			else
+			{
+				levelStrings.Add (customPremadeLevels[i]);
+			}
+			levelCount ++;
+		}
+		for (int i = 0; i < levelStrings.Count; i ++)
+		{
+			GameObject lvlItem = Instantiate (levelSelectPrefab) as GameObject;
+			lvlItem.transform.SetParent (standardLevelsParent);
+			lvlItem.GetComponent<Level>().InitObject (levelStrings[i], levelNames[i]);
+			instantiatedLevelitems.Add (lvlItem);
+		}
 		// TODO Go through textfile and make a level for each of thos lines
 
 		// Custom levels
@@ -96,10 +116,13 @@ public class GameManager : MonoBehaviour
 		{
 			string levelString = LevelGenerator.instance.GetLevel (i, false);
 			string levelName = LevelGenerator.instance.GetLevel (i, true);
-			GameObject lvlItem = Instantiate (levelSelectPrefab) as GameObject;
-			lvlItem.transform.SetParent (customLevelsParent);
-			lvlItem.GetComponent<Level>().InitObject (levelString, levelName);
-			instantiatedLevelitems.Add (lvlItem);
+			if (levelString.Length > 0)
+			{
+				GameObject lvlItem = Instantiate (levelSelectPrefab) as GameObject;
+				lvlItem.transform.SetParent (customLevelsParent);
+				lvlItem.GetComponent<Level>().InitObject (levelString, levelName);
+				instantiatedLevelitems.Add (lvlItem);
+			}
 		}
 	}
 
@@ -120,117 +143,10 @@ public class GameManager : MonoBehaviour
 		Time.timeScale = 1f;
 	}
 
-	// TODO Remove all these
-	public void MainMenuToReadyGame()
+	public void PlayAudioClip(AudioClip clip)
 	{
-		// UI Activate/deactivate
-		GUIManager.instance.mainPanel.SetActive (false);
-		GUIManager.instance.readyPanel.SetActive (true);
-		
-		// Calls
-		PlayerManager.instance.InitializePlayers ();
-		StartCoroutine (GUIManager.instance.DoCountdown ());
-	}
-	
-	public void ReadyGameToPlaying()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.readyPanel.SetActive (false);
-		
-		// Calls
-		gameInProgress = true;
-		PlayerManager.instance.StartPlayers ();
-	}
-	
-	public void PlayingToGameOver()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.gameOverPanel.SetActive (true);
-		
-		// Calls
-		gameInProgress = false;
-		string scoreText = "You got " + PlayerManager.instance.allPaddles[0].score + " points!"; // Scoretext for one player
-		if (playerMode != PlayerMode.Single) // If more than one player
-		{
-			scoreText = "";
-			for (int i = 0; i < PlayerManager.instance.allPaddles.Count; i ++)
-			{
-				scoreText += string.Format ("Player {0}: {1} points\n", i + 1, PlayerManager.instance.allPaddles[i].score);
-			}
-		}
-		GUIManager.instance.gameOverScoreText.text = scoreText;
-	}
-	
-	public void GameOverToReadyGame()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.gameOverPanel.SetActive (false);
-		
-		// Calls
-		MainMenuToReadyGame ();
-	}
-	
-	public void GameOverToMainMenu()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.gameOverPanel.SetActive (false);
-		GUIManager.instance.mainPanel.SetActive (true);
-		
-		// Calls
-	}
-
-	public void MainMenuToSettings()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.gameOverPanel.SetActive (false);
-		GUIManager.instance.mainPanel.SetActive (true);
-		
-		// Calls
-	}
-
-	public void SettingsToMainMenu()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.gameOverPanel.SetActive (false);
-		GUIManager.instance.mainPanel.SetActive (true);
-		
-		// Calls
-	}
-
-	public void MainMenuToLevelSelect()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.gameOverPanel.SetActive (false);
-		GUIManager.instance.mainPanel.SetActive (true);
-		
-		// Calls
-	}
-
-	public void LevelSelectToMainMenu()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.gameOverPanel.SetActive (false);
-		GUIManager.instance.mainPanel.SetActive (true);
-		
-		// Calls
-	}
-
-	public void MainMenuToLevelEditor()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.gameOverPanel.SetActive (false);
-		GUIManager.instance.mainPanel.SetActive (true);
-		
-		// Calls
-	}
-
-	public void LevelEditorToMainMenu()
-	{
-		// UI Activate/deactivate
-		GUIManager.instance.gameOverPanel.SetActive (false);
-		GUIManager.instance.mainPanel.SetActive (true);
-		
-		// Calls
+		audioSource.pitch = Random.Range (0.8f, 1.2f);
+		audioSource.PlayOneShot (clip);
 	}
 
 	/// <summary>

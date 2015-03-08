@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BallMovement : MonoBehaviour {
-	
-	
+
 	public float movementSpeed;
 	public float angleStrength; // the sesitivity of the new angle the ball gets when it collides with the paddle
 	public float speedFactor = 1.2f; // Factor for increasing the speed [currentSpeed += (origingalSpeed * speedFactor / 100)]
@@ -30,7 +29,7 @@ public class BallMovement : MonoBehaviour {
 	}
 	
 	void Update () {
-		if(hasStarted){
+		if(hasStarted && GameManager.instance.gameInProgress){
 			rigidbody2D.velocity = direction * movementSpeed * Time.deltaTime;
 		}
 	}
@@ -78,16 +77,28 @@ public class BallMovement : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 		if (hasStarted) // Check if we have started (in case the ball hits something before starting to play)
 		{
-			if(col.gameObject.tag == "Paddle") 
+			if (canReverse)
 			{
-				SetOwnerPaddle (col.gameObject.GetComponent<Paddle>());
-				PaddleCollision(col);
-			} 
-			else
-			{
-				Vector3 norm = col.contacts [0].normal;
-				//ChangeDirection (norm);
-				ChangeDirection (norm);
+				if(col.gameObject.tag == "Paddle") 
+				{
+					SetOwnerPaddle (col.gameObject.GetComponent<Paddle>());
+					PaddleCollision(col);
+				} 
+				else
+				{
+					Vector3 norm = col.contacts [0].normal;
+					//ChangeDirection (norm);
+					ChangeDirection (norm);
+				}
+				canReverse = false;
+				if (gameObject.activeInHierarchy)
+				{
+					StartCoroutine (Rev ());
+				}
+				if (col.gameObject.CompareTag ("Brick"))
+				{
+					col.gameObject.GetComponent<Brick>().OnHit (this);
+				}
 			}
 			
 			oldVector = new Vector2 (direction.x, direction.y);
@@ -100,29 +111,30 @@ public class BallMovement : MonoBehaviour {
 				IncreaseSpeed ();
 			}
 			currentHits ++;
-			
-			if(col.gameObject.tag != "Brick"){
-				if(GameManager.instance.playFirstClip){
-					GameManager.instance.audio.clip = GameManager.instance.audioClipWallHit1;
-					GameManager.instance.playFirstClip = false;
-				} else {
-					GameManager.instance.audio.clip = GameManager.instance.audioClipWallHit2;
-					GameManager.instance.playFirstClip = true;
-				}
-				GameManager.instance.audio.Play ();
+
+			if (col.gameObject.CompareTag ("Wall") || col.gameObject.CompareTag ("Paddle"))
+			{
+				GameManager.instance.PlayAudioClip (
+					GameManager.instance.acWallHits[Random.Range (0, GameManager.instance.acWallHits.Length)]);
 			}
 		}
 	}
-	
+	IEnumerator Rev()
+	{
+		yield return new WaitForEndOfFrame();
+		canReverse = true;
+	}
 	void OnCollisionExit2D(Collision2D col)
 	{
 		currentHits = 0;
 	}
-	
+	public bool canReverse = true;
+
 	void PaddleCollision(Collision2D col){
 		Vector2 paddlePos = col.transform.position;
 		Vector2 ballPos = gameObject.transform.position;
-		Vector2 difference = ballPos - paddlePos;
+
+		Vector2 difference = ballPos - paddlePos; // this might cause the ball to move too horizontal
 		difference.x = difference.x * angleStrength / 100f;
 		Vector2 newDirection = difference.normalized;
 		direction.y = newDirection.y;
@@ -134,7 +146,7 @@ public class BallMovement : MonoBehaviour {
 	/// </summary>
 	public void IncreaseSpeed()
 	{
-		movementSpeed += (origSpeed * speedFactor) * 0.09f;
+		movementSpeed += ((origSpeed * speedFactor) * 0.01f);
 	}
 	
 	/// <summary>

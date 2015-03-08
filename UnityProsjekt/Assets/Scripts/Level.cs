@@ -33,7 +33,7 @@ public class Level : MonoBehaviour
 		else
 		{
 			spawnedLevel = LevelGenerator.instance.GenerateLevel (levelString, levelName);
-			spawnedLevel.GetComponent<LevelInfo>().InitializeInfo (levelString, levelName);
+			spawnedLevel.GetComponent<LevelInfo>().InitializeInfo (levelName, levelString);
 		}
 	}
 
