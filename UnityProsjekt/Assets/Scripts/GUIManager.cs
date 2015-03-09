@@ -134,6 +134,11 @@ public class GUIManager : MonoBehaviour
 	/////////////////////////////////
 	// Begin all the GUI functions //
 	/////////////////////////////////
+	
+	public void QuitApplication()
+	{
+		Application.Quit ();
+	}
 
 	/// <summary>
 	/// Changes the player mode.
